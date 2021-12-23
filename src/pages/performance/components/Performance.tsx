@@ -63,7 +63,7 @@ const Performance: FC = (): ReactElement => {
     return (
         <div className="performance">
             <Header>绩效统计</Header>
-            <div className="main performance-main">
+            <div className="main performance-main" style={{overflow: 'hidden'}}>
                 <div className="performance-classification">
                     <span>工作中</span>
                     <span className="performance-workBox"></span>
@@ -72,32 +72,34 @@ const Performance: FC = (): ReactElement => {
                     <span>空闲</span>
                     <span className="performance-freeBox"></span>
                 </div>
-                {
-                    data.length
-                        ?
-                        data.map((item, ind) => {
-                            return (
-                                <div className="performance-con" key={ind} onClick={() => handToClick(item)}>
-                                    <div className="performance-conLeft">{item.userName}</div>
-                                    <div className="performance-conRight">
-                                        {
-                                            item.list.map((m, index) => {
-                                                return (
-                                                    <div style={{flex: m.finishSecond + m.freeSecond + m.overSecond}}  key={index}>
-                                                        <span className="performance-workBox" style={{flex: m.finishSecond}}></span>
-                                                        <span className="performance-timeoutBox" style={{flex: m.overSecond}}></span>
-                                                        <span className="performance-freeBox" style={{flex: m.freeSecond}}></span>
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                <div className="performance-main">
+                    {
+                        data.length
+                            ?
+                            data.map((item, ind) => {
+                                return (
+                                    <div className="performance-con" key={ind} onClick={() => handToClick(item)}>
+                                        <div className="performance-conLeft">{item.userName}</div>
+                                        <div className="performance-conRight">
+                                            {
+                                                item.list.map((m, index) => {
+                                                    return (
+                                                        <div style={{flex: m.finishSecond + m.freeSecond + m.overSecond}}  key={index}>
+                                                            <span className="performance-workBox" style={{flex: m.finishSecond}}></span>
+                                                            <span className="performance-timeoutBox" style={{flex: m.overSecond}}></span>
+                                                            <span className="performance-freeBox" style={{flex: m.freeSecond}}></span>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        })
-                        :
-                        null
-                }
+                                )
+                            })
+                            :
+                            null
+                    }
+                </div>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 .performance {
     width: 100%;
     height: 100%;
-    .performance-main {
+    .main {
         padding: 30px;
         .performance-classification {
             margin-bottom: 50px;
@@ -36,6 +36,10 @@
                 margin-right: 30px
             }
         }
+        .performance-main {
+            height: calc(100vh - 200px);
+            overflow-x: hidden;
+        }
         .performance-con {
             margin-bottom: 30px;
             width: 100%;
@@ -51,19 +55,19 @@
                     display: flex;
                 }
                 .performance-workBox {
-                    height: 38px;
+                    height: 50px;
                     background: #5E8FFF;
                     display: inline-block;
                     flex: 1
                 }
                 .performance-timeoutBox {
-                    height: 38px;
+                    height: 50px;
                     background: #FF795E;
                     display: inline-block;
                     flex: 1
                 }
                 .performance-freeBox {
-                    height: 38px;
+                    height: 50px;
                     background: #E9F0FE;
                     display: inline-block;
                     flex: 1

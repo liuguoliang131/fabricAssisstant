@@ -142,8 +142,8 @@ const Order: FC = (): ReactElement => {
                         </div>
                         <div className="order-screening" onClick={screening}>筛选</div>
                     </div>
+                    <div className="order-order">订单数量：<span style={{fontWeight: 'bold'}}>{dataNum}</span></div>
                     <div className="order-main" ref={(dom) => {setDom(dom)}} onScrollCapture={() => handleOnScroll()}>
-                        <div className="order-order">订单数量：<span style={{fontWeight: 'bold'}}>{dataNum}</span></div>
                         {
                             data.data.length
                                 ?
