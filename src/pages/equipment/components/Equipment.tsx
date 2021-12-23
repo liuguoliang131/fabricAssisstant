@@ -115,7 +115,7 @@ const Equipment: FC = (): ReactElement => {
                                             <span className="equipment-mainListState">{item.status ? '故障' : '正常'}({item.useStatus ? '使用中' : '闲置'})</span>
                                         </div>
                                         <div className="equipment-mainListNameSerial">
-                                            <span className="equipment-mainListName">整烫机</span>
+                                            <span className="equipment-mainListName">{item.name}</span>
                                             <span className="equipment-mainListSerial">{item.code}</span>
                                         </div>
                                         <div className="equipment-mainListText">{item.workshopName}{item.groupName}</div>
