@@ -33,6 +33,10 @@ const Income: FC = (): ReactElement => {
 
     console.log(" =========== Income 收入统计 =========== ");
 
+    const userInfo: any = localStorage.getItem('userInfo')
+    const user = JSON.parse(userInfo)
+    const companyId = user.userCompanyOut.companyId
+
     const [dataIncome, setDataIncome] = useState<DataIncome>({
         balance: 0,
         bank: 0,
@@ -50,8 +54,6 @@ const Income: FC = (): ReactElement => {
         weixin: 0,
         zhifubao: 0
     })
-
-    const companyId = '436'
 
     useEffect(() => {
         findIncome()

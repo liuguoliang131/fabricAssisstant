@@ -15,6 +15,10 @@ const Customer: FC = (): ReactElement => {
 
     console.log(" =========== Customer 客户统计 =========== ");
 
+    const userInfo: any = localStorage.getItem('userInfo')
+    const user = JSON.parse(userInfo)
+    const companyId = user.userCompanyOut.companyId
+
     const date = new Date();
     const years = date.getFullYear();
     const months = (date.getMonth() + 1).toString()
@@ -34,7 +38,6 @@ const Customer: FC = (): ReactElement => {
     const [xAxis, setXAxis] = useState<string[]>([])
     const [series, setSeries] = useState<number[]>([])
 
-    const companyId = '436'
 
     const findCustomer = async (time: string) => {
         try {

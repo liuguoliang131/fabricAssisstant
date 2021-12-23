@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { getData } from "src/ts/requestUtil";
 import './login.less';
@@ -10,6 +10,16 @@ const Login: FC = (): ReactElement => {
     console.log(" =========== Login 首页 =========== ");
 
     let history = useHistory();
+
+    useEffect(() => {
+        const userInfo: any = localStorage.getItem('userInfo')
+        const user = JSON.parse(userInfo)
+        const companyId = user.userCompanyOut.companyId
+        if (companyId) {
+            history.push(`/appLayout/home`)
+        }
+    }, []);
+
     const [name, setName] = useState('');
     const [pass, setPass] = useState('');
 
