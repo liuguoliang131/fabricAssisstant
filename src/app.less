@@ -41,6 +41,10 @@ body {
     font-weight: normal;
 }
 
+html, body {
+    height: 100%
+}
+
 input, textarea {
     -webkit-user-select: text;
     -webkit-appearance: none;
@@ -81,6 +85,13 @@ a {
     text-decoration: none
 }
 
+#root {
+    width: 100%;
+    max-width: 750px;
+    height: 100%;
+    margin: 0 auto
+}
+
 /*Loading 链接进入*/
 .webLoading {
     position: absolute;
@@ -91,4 +102,104 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.title {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 500;
+    color: #FFFFFF;
+    &:before {
+        content:"";
+        display: inline-block;
+        background: #FFCC00;
+        width: 6px;
+        height: 20px;
+        margin-right: 10px;
+    }
+}
+
+.title-black {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.main {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.content {
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.exit {
+    width: 46px;
+    height: 10px
+}
+
+.box {
+    margin: 30px;
+    border-radius: 30px;
+    background: #FFFFFF;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.select {
+    width: 210px;
+    border: 1px solid #999999;
+    border-radius: 4px;
+    select {
+        width: 180px;
+        min-height: 50px;
+        height: 100%;
+        border: 0;
+        appearance: none;
+        font-size: 24px;
+        box-sizing: border-box;
+        background-color: transparent;
+        color: #333333;
+        display: inline-block;
+        padding: 0 10px
+    }
+    span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid #ccc;
+        border-left: 2px solid #ccc;
+        transform: rotate(-135deg);
+        margin-top: -7px;
+        vertical-align: middle;
+    }
+}
+
+.input {
+    font-size: 26px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 62px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    & > input {
+        width: 100%;
+        padding-left: 10px;
+        box-sizing: border-box;
+        border: 0;
+        font-size: 26px;
+        border-radius: 10px;
+    }
+}
+
+.searchImg {
+    width: 26px;
+    height: 26px;
 }

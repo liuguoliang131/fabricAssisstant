@@ -1,0 +1,43 @@
+.income {
+    width: 100%;
+    height: 100%;
+    .title-account {
+        &:before {
+            content:"";
+            display: inline-block;
+            background: #3376FF;
+            width: 6px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    }
+    .income-statistics {
+        position: relative;
+        min-height: 200px;
+        & > span {
+            width: 50%;
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: 500;
+            color: #666666;
+        }
+    }
+    .charts {
+        height: 500px;
+        width: 100%;
+    }
+    .income-img {
+        position: absolute;
+        bottom: -38px;
+        right: -30px
+    }
+    .income-income {
+        width: 225px;
+        height: 245px;
+    }
+    .income-balance {
+        width: 223px;
+        height: 200px;
+    }
+}

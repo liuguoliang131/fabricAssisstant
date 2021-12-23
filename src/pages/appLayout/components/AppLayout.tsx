@@ -1,7 +1,6 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import './appLayout.less'
-import { postData } from "src/ts/requestUtil";
+import React, { FC, ReactElement, useEffect } from 'react';
+import './appLayout.less';
+import { history } from "src/router";
 
 
 const AppLayout: FC = (props): ReactElement => {
@@ -9,16 +8,18 @@ const AppLayout: FC = (props): ReactElement => {
     console.log(" =========== AppLayout 组件渲染 =========== ");
 
     const {children} = props;
-    let history = useHistory();
+
+    const userInfo = localStorage.getItem('userInfo');
 
     useEffect(() => {
-
+        if (!userInfo) {
+            history.push(`/`)
+        }
     }, []);
 
-
     return (
-        <div className="hn_root">
-            <div className="hn_main">
+        <div className="layout-root">
+            <div className="layout-main">
                 {children}
             </div>
         </div>

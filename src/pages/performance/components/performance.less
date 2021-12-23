@@ -1,0 +1,99 @@
+.performance {
+    width: 100%;
+    height: 100%;
+    .performance-main {
+        padding: 30px;
+        .performance-classification {
+            margin-bottom: 50px;
+            & > span {
+                font-size: 24px;
+                font-weight: 500;
+                color: #333333;
+                display: inline-block;
+                line-height: 38px;
+                vertical-align: bottom;
+                margin-right: 10px
+            }
+            .performance-workBox {
+                width: 70px;
+                height: 38px;
+                background: #5E8FFF;
+                border-radius: 4px;
+                margin-right: 30px
+            }
+            .performance-timeoutBox {
+                width: 70px;
+                height: 38px;
+                background: #FF795E;
+                border-radius: 4px;
+                margin-right: 30px
+            }
+            .performance-freeBox {
+                width: 70px;
+                height: 38px;
+                background: #E9F0FE;
+                border-radius: 4px;
+                margin-right: 30px
+            }
+        }
+        .performance-con {
+            margin-bottom: 30px;
+            width: 100%;
+            display: flex;
+            .performance-conLeft {
+                width: 100px;
+            }
+            .performance-conRight {
+                flex: 1;
+                display: flex;
+                & > div {
+                    width: 100%;
+                    display: flex;
+                }
+                .performance-workBox {
+                    height: 38px;
+                    background: #5E8FFF;
+                    display: inline-block;
+                    flex: 1
+                }
+                .performance-timeoutBox {
+                    height: 38px;
+                    background: #FF795E;
+                    display: inline-block;
+                    flex: 1
+                }
+                .performance-freeBox {
+                    height: 38px;
+                    background: #E9F0FE;
+                    display: inline-block;
+                    flex: 1
+                }
+            }
+        }
+    }
+    .performance-work {
+        .performance-workTit {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 500;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+        .performance-workCon {
+            display: flex;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 500;
+            color: #666666;
+            &> div {
+                flex: 1
+            }
+        }
+        .performance-falling {
+            width: 22px;
+            height: 12px;
+            vertical-align: middle;
+            margin-right: 20px
+        }
+    }
+}

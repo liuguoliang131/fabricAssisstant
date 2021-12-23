@@ -1,0 +1,75 @@
+.inventory {
+    width: 100%;
+    height: 100%;
+    .inventory-content{
+        box-sizing: border-box;
+        padding: 30px;
+        width: 100%;
+        .inventory-search {
+            width: 100%;
+            display: flex;
+            box-sizing: border-box;
+            .inventorySearch {
+                margin-right: 30px;
+            }
+            .input {
+                flex: 2;
+                display: flex;
+                margin-right: 30px;
+            }
+            .inventory-screening {
+                width: 114px;
+                height: 62px;
+                line-height: 62px;
+                background: #3376FF;
+                border-radius: 8px;
+                font-size: 26px;
+                font-weight: 500;
+                color: #FFFFFF;
+                text-align: center;
+            }
+        }
+    }
+    .inventory-table {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 500;
+        color: #666666;
+        & > div {
+            flex: 1;
+            text-align: center;
+        }
+        .inventory-information {
+            //width: 240px;
+            flex: 1;
+        }
+    }
+    .inventory-tableColumns {
+        height: 80px;
+        background: #F5F5F5;
+    }
+    .inventory-tableList {
+        padding: 30px 0;
+        border: 1px solid #F0F0F0;
+        color: #333333;
+    }
+    .inventory-title {
+        margin-bottom: 20px;
+        text-align: left;
+        padding-left: 30px;
+    }
+    .inventory-unit {
+        color: #C4C4C4;
+    }
+    .inventory-main {
+        height: calc(100% - 200px);
+        overflow-x: hidden;
+    }
+    .inventory-tableData {
+        width: 100%;
+        height: 100%;
+    }
+}

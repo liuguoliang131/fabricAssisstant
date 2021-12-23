@@ -1,0 +1,53 @@
+.equipment {
+    width: 100%;
+    height: 100%;
+    .main {
+        padding: 30px;
+        .equipment-main {
+            margin-top: 30px;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: space-between;
+            .equipment-mainList {
+                margin-bottom: 30px;
+                width: calc(50% - 15px);
+                background: #FFFFFF;
+                box-sizing: border-box;
+                padding: 30px;
+                color: #333333;
+                border-radius: 6px;
+                &:nth-child(odd){
+                    margin-right: 30px
+                }
+                .equipment-mainListDge {
+                    display: inline-block;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 90%;
+                }
+                .equipment-mainListState {
+                    margin-left: 10px;
+                    font-size: 24px;
+                    font-weight: 500;
+                }
+                .equipment-mainListNameSerial {
+                    margin-top: 20px;
+                    .equipment-mainListName {
+                        font-size: 28px;
+                        font-weight: bold;
+                    }
+                    .equipment-mainListSerial {
+                        font-size: 28px;
+                        font-weight: 500;
+                    }
+                }
+                .equipment-mainListText {
+                    font-size: 26px;
+                    font-weight: 500;
+                    color: #666666;
+                    margin-top: 10px
+                }
+            }
+        }
+    }
+}
