@@ -4,6 +4,15 @@ import { useHistory, Link } from "react-router-dom";
 import { getData } from "src/ts/requestUtil";
 import { TODAY_ORDER_STATISTICS } from "src/constants/api";
 
+interface Res {
+    code: string,
+    error: boolean,
+    model: Data,
+    msg: string,
+    success: boolean
+    traceId: string
+}
+
 interface Data {
     todayOrderCount: number,
     todayPrice: number | null,
@@ -38,7 +47,7 @@ const Home: FC = (): ReactElement => {
 
     const findTodayOrder = async () => {
         try {
-            const res: any = await getData(`${TODAY_ORDER_STATISTICS}?companyId=${companyId}`)
+            const res: Res = await getData(`${TODAY_ORDER_STATISTICS}?companyId=${companyId}`)
             if (res.success) {
                 setData(res.model)
             } else {
