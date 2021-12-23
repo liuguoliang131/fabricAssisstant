@@ -158,9 +158,9 @@ const Inventory: FC = (): ReactElement => {
                                         return (
                                             <div className="inventory-table inventory-tableList" key={index}>
                                                 <div className="inventory-information">
-                                                    <div className="inventory-title">名称:{item.bookName}</div>
-                                                    <div className="inventory-title">品牌:{item.brandName}</div>
-                                                    <div className="inventory-title">货号:{item.materialArticleNumber}</div>
+                                                    <div className="inventory-title">名称：{item.bookName}</div>
+                                                    <div className="inventory-title">品牌：{item.brandName}</div>
+                                                    <div className="inventory-title">货号：{item.materialArticleNumber}</div>
                                                 </div>
                                                 {/*<div>*/}
                                                 {/*    <div>400</div>*/}
