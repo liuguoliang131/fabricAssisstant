@@ -2,8 +2,8 @@
  * 创建人： 徐盼强
  * 功能描述：react-router 包裹
  */
-import React, { Suspense, lazy, FC, ReactElement, useEffect } from "react";
-import { Route, Switch, Redirect, Router, useHistory } from "react-router-dom";
+import React, { Suspense, lazy, FC, ReactElement } from "react";
+import { Route, Switch, Redirect, Router } from "react-router-dom";
 import { createBrowserHistory as createHistory } from "history"; // 锚点模式的history createBrowserHistory  createHashHistory
 // 创建一个浏览器历史记录
 export const history = createHistory();

@@ -17,5 +17,4 @@ if (module && module.hot) {
 ReactDOM.render(
     <App />,
     document.querySelector('#root')
-
 )
