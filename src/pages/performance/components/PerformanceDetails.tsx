@@ -5,7 +5,7 @@ import './performance.less'
 import { getData } from "src/ts/requestUtil";
 import { FIND_STAFF_PROCEDURE_ALL, FIND_STAFF_RATIO_ALL } from "src/constants/api";
 
-interface Props {
+interface IProps {
     match: {
         params: {
             userId: string,
@@ -45,7 +45,12 @@ interface DataAll {
     userName: string
 }
 
-// 格式化日期格式为 xxxx-xx-xx
+/**
+ * 格式化日期格式为 xxxx-xx-xx
+ * @param targetDate
+ * @param fullYear
+ * @param month
+ */
 function getFullDate(targetDate: number, fullYear: number, month: number) {
     let D, y, m, d;
     if (targetDate) {
@@ -64,7 +69,7 @@ function getFullDate(targetDate: number, fullYear: number, month: number) {
 }
 
 
-const PerformanceDetails: FC<Props & RouteComponentProps> = (props): ReactElement => {
+const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactElement => {
 
     console.log(" =========== PerformanceDetails 绩效工作详情 =========== ");
 
