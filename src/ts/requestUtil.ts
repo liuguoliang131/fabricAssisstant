@@ -14,7 +14,7 @@ axios.defaults.baseURL = API_BASE_URL;
 axios.interceptors.response.use((res) => {
     return res.data;
 }, err => {
-    return alert("网络异常，请您联系系统管理员!")
+    return Promise.reject("网络异常，请您联系系统管理员!")
 });
 
 /*request设置请求头的token*/
