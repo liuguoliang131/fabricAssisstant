@@ -13,9 +13,7 @@ const Login: FC = (): ReactElement => {
 
     useEffect(() => {
         const userInfo: any = localStorage.getItem('userInfo')
-        const user = JSON.parse(userInfo)
-        const companyId = user.userCompanyOut.companyId
-        if (companyId) {
+        if (userInfo) {
             history.push(`/appLayout/home`)
         }
     }, []);

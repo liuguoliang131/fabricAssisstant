@@ -9,7 +9,7 @@ const Agreement: FC = (): ReactElement => {
 
     return (
         <div className="agreement">
-            <Header>协议</Header>
+            <Header exitHide={true}>协议</Header>
             <div className="agreement-con">
                 <div className="agreement-tit">厚鸟软件使用及服务协议书</div>
                 <div>尊敬的企业用户：</div>

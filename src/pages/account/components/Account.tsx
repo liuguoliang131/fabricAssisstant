@@ -1,8 +1,7 @@
 import React, { FC, ReactElement } from 'react'
-import Header from "components/header/Header";
+import Header from "components/header/Header"
+import { useHistory } from "react-router-dom"
 import './account.less'
-import { useHistory } from "react-router-dom";
-
 
 const Account: FC = (): ReactElement => {
 
