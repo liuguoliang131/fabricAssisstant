@@ -88,7 +88,6 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
     const endDate = getFullDate(nowDate.setDate(endOfMonth), fullYear, month);//当月最后一天
     const startDate = getFullDate(nowDate.setDate(1), fullYear, month);//当月第一天
 
-    console.log(day)
     const dayData = day.length === 1 ? `0${day}` : day
 
 
