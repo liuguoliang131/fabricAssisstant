@@ -29,7 +29,7 @@ const AppRoutes: FC = (): ReactElement => {
                 <Switch>
                     {/* 登录 */}
                     <Route exact path={`/`} component={Login} />
-                    <Route exact path={`/agreement`} component={Agreement} />
+                    <Route path={`/agreement`} component={Agreement} />
                     {/* 主体 */}
                     <Route path={`/appLayout`} component={AppLayoutRoutes} />
                     <Redirect to={`/`} />
