@@ -104,7 +104,7 @@ const Order: FC = (): ReactElement => {
         }
     }
 
-    const [dom, setDom] = useState<any>( null);
+    const [dom, setDom] = useState<any>(null);
 
     // 监听页面滚动
     const handleOnScroll = () => {
@@ -114,7 +114,7 @@ const Order: FC = (): ReactElement => {
             const scrollHeight = dom.scrollHeight; //滚动条内容的总高度
             if (contentScrollTop + clientHeight >= scrollHeight) {
                 if (pageNo + 1 <= data.sumPage) {
-                    findOrder(nameVal, orderVal, pageNo+1);
+                    findOrder(nameVal, orderVal, pageNo + 1);
                 }
             }
         }
@@ -143,7 +143,11 @@ const Order: FC = (): ReactElement => {
                         <div className="order-screening" onClick={screening}>筛选</div>
                     </div>
                     <div className="order-order">订单数量：<span style={{fontWeight: 'bold'}}>{dataNum}</span></div>
-                    <div className="order-main" ref={(dom) => {setDom(dom)}} onScrollCapture={() => handleOnScroll()}>
+                    <div
+                        className="order-main" ref={(dom) => {
+                        setDom(dom)
+                    }} onScrollCapture={() => handleOnScroll()}
+                    >
                         {
                             data.data.length
                                 ?
@@ -164,7 +168,7 @@ const Order: FC = (): ReactElement => {
                                         </div>
                                     </div>
                                 })
-                                : null
+                                : <div className="noData">暂无数据</div>
                         }
                     </div>
                 </div>

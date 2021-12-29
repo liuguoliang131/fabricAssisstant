@@ -145,10 +145,16 @@ const Customer: FC = (): ReactElement => {
                         </div>
                     </div>
                     <div className="customer-main">
-                        <ReactECharts
-                            option={getOption}
-                            style={{width: '100%', height: 200 + 40*series.length}}
-                        />
+                        {
+                            series.length
+                                ?
+                                <ReactECharts
+                                    option={getOption}
+                                    style={{width: '100%', height: 200 + 40*series.length}}
+                                />
+                                :
+                                <div className="noData">暂无数据</div>
+                        }
                     </div>
                 </div>
             </div>

@@ -106,24 +106,31 @@ const Equipment: FC = (): ReactElement => {
                 <div className="equipment-main">
                     {
                         data.length
-                        ?
+                            ?
                             data.map(item => {
                                 return (
                                     <div className="equipment-mainList" key={item.id}>
                                         <div>
-                                            <span style={{background: findColor(item.status, item.useStatus)}} className="equipment-mainListDge"></span>
-                                            <span className="equipment-mainListState">{item.status ? '故障' : '正常'}({item.useStatus ? '使用中' : '闲置'})</span>
+                                            <span
+                                                style={{background: findColor(item.status, item.useStatus)}}
+                                                className="equipment-mainListDge"
+                                            ></span>
+                                            <span
+                                                className="equipment-mainListState"
+                                            >{item.status ? '故障' : '正常'}({item.useStatus ? '使用中' : '闲置'})</span>
                                         </div>
                                         <div className="equipment-mainListNameSerial">
                                             <span className="equipment-mainListName">{item.name}</span>
                                             <span className="equipment-mainListSerial">{item.code}</span>
                                         </div>
-                                        <div className="equipment-mainListText">{item.workshopName}{item.groupName}</div>
+                                        <div
+                                            className="equipment-mainListText"
+                                        >{item.workshopName}{item.groupName}</div>
                                     </div>
                                 )
                             })
                             :
-                            null
+                            <div className="noData">暂无数据</div>
                     }
                 </div>
             </div>

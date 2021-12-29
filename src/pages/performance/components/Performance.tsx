@@ -66,11 +66,11 @@ const Performance: FC = (): ReactElement => {
             <div className="main performance-main" style={{overflow: 'hidden'}}>
                 <div className="performance-classification">
                     <span>工作中</span>
-                    <span className="performance-workBox"></span>
+                    <span className="performance-workBox" />
                     <span>超时</span>
-                    <span className="performance-timeoutBox"></span>
+                    <span className="performance-timeoutBox" />
                     <span>空闲</span>
-                    <span className="performance-freeBox"></span>
+                    <span className="performance-freeBox" />
                 </div>
                 <div className="performance-main">
                     {
@@ -84,10 +84,22 @@ const Performance: FC = (): ReactElement => {
                                             {
                                                 item.list.map((m, index) => {
                                                     return (
-                                                        <div style={{flex: m.finishSecond + m.freeSecond + m.overSecond}}  key={index}>
-                                                            <span className="performance-workBox" style={{flex: m.finishSecond}}></span>
-                                                            <span className="performance-timeoutBox" style={{flex: m.overSecond}}></span>
-                                                            <span className="performance-freeBox" style={{flex: m.freeSecond}}></span>
+                                                        <div
+                                                            style={{flex: m.finishSecond + m.freeSecond + m.overSecond}}
+                                                            key={index}
+                                                        >
+                                                            <span
+                                                                className="performance-workBox"
+                                                                style={{flex: m.finishSecond}}
+                                                            />
+                                                            <span
+                                                                className="performance-timeoutBox"
+                                                                style={{flex: m.overSecond}}
+                                                            />
+                                                            <span
+                                                                className="performance-freeBox"
+                                                                style={{flex: m.freeSecond}}
+                                                            />
                                                         </div>
                                                     )
                                                 })
@@ -97,7 +109,7 @@ const Performance: FC = (): ReactElement => {
                                 )
                             })
                             :
-                            null
+                            <div className="noData">暂无数据</div>
                     }
                 </div>
             </div>

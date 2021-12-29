@@ -72,8 +72,8 @@ const Home: FC = (): ReactElement => {
     return (
         <div className="home">
             <div className="home-header">
-                <div className="home-headerLeft" onClick={account} >
-                    <img src={logoPath} className="home-avatar"/>
+                <div className="home-headerLeft" onClick={account}>
+                    <img src={logoPath} className="home-avatar" />
                     {companyName}
                 </div>
                 <div>
@@ -105,7 +105,7 @@ const Home: FC = (): ReactElement => {
                         {
                             data.todayOrderOutList.length ? data.todayOrderOutList.map((item: List) => {
                                 return (<span key={item.categoryName}>{item.categoryName}：{item.toDayOrder}</span>)
-                            }) : null
+                            }) : <div className="noData">暂无数据</div>
                         }
                     </div>
                 </div>
@@ -139,7 +139,7 @@ const Home: FC = (): ReactElement => {
                             <img src={require('../assets/equipment.png')} className="home-equipment" />
                             <div className="home-queryText">设备管理</div>
                         </Link>
-                        <a></a>
+                        <a />
                     </div>
                 </div>
             </div>

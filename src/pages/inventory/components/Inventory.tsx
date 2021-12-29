@@ -123,7 +123,7 @@ const Inventory: FC = (): ReactElement => {
                                 <option label="面料" value="1">面料</option>
                                 <option label="商品" value="2">商品</option>
                             </select>
-                            <span></span>
+                            <span />
                         </div>
                         <div className="input order-input">
                             <img className="searchImg" src={require('../../../components/assets/search.png')} />
@@ -160,7 +160,9 @@ const Inventory: FC = (): ReactElement => {
                                                 <div className="inventory-information">
                                                     <div className="inventory-title">名称：{item.bookName}</div>
                                                     <div className="inventory-title">品牌：{item.brandName}</div>
-                                                    <div className="inventory-title">货号：{item.materialArticleNumber}</div>
+                                                    <div
+                                                        className="inventory-title"
+                                                    >货号：{item.materialArticleNumber}</div>
                                                 </div>
                                                 {/*<div>*/}
                                                 {/*    <div>400</div>*/}
@@ -185,7 +187,7 @@ const Inventory: FC = (): ReactElement => {
                                 }
                             </div>
                         </div>
-                        : null
+                        : <div className="noData">暂无数据</div>
                 }
             </div>
         </div>
