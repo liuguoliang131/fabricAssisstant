@@ -73,7 +73,7 @@ const Customer: FC = (): ReactElement => {
         grid: {
             left: 0,
             bottom: 0,
-            right: 0,
+            right: 100,
             containLabel: true
         },
         xAxis: {
@@ -107,8 +107,9 @@ const Customer: FC = (): ReactElement => {
                         let data = e.data;
                         return `￥ ${data}`
                     },
+                    position: 'right',
                     fontSize: 14,
-                    color: '#fff'
+                    color: '#333'
                 },
                 barWidth : 30,
                 color: '#7FA9FF',
