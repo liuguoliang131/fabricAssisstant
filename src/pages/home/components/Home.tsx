@@ -74,7 +74,7 @@ const Home: FC = (): ReactElement => {
             <div className="home-header">
                 <div className="home-headerLeft" onClick={account}>
                     <img src={logoPath} className="home-avatar" />
-                    {companyName}
+                      {companyName}
                 </div>
                 <div>
                     <img src={require('../assets/exit.png')} className="exit" onClick={exit} />
@@ -100,7 +100,7 @@ const Home: FC = (): ReactElement => {
                     </div>
                 </div>
                 <div className="box">
-                    <div className="title title-black">订单量</div>
+                    <div className="title title-black">下单量</div>
                     <div className="home-order">
                         {
                             data.todayOrderOutList.length ? data.todayOrderOutList.map((item: List) => {
