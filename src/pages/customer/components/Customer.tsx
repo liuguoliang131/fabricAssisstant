@@ -19,28 +19,35 @@ const Customer: FC = (): ReactElement => {
     const companyId = user.userCompanyOut.companyId
 
     const date = new Date();
-    const years = date.getFullYear();
+    const years = date.getFullYear().toString();
     const months = (date.getMonth() + 1).toString()
     const monthsData = months.length === 1 ? `0${months}` : months
 
     const [value, setValue] = useState(months)
 
+    const [yearsValue, setYearsValue] = useState(years)
+
     const onChange = (e: any) => {
         setValue(e.target.value)
-        findCustomer(e.target.value)
+        findCustomer(yearsValue, e.target.value)
+    }
+
+    const onChangeYears = (e: any) => {
+        setYearsValue(e.target.value)
+        findCustomer(e.target.value, value)
     }
 
     useEffect(() => {
-        findCustomer(monthsData)
+        findCustomer(years, monthsData)
     }, []);
 
     const [xAxis, setXAxis] = useState<string[]>([])
     const [series, setSeries] = useState<number[]>([])
 
 
-    const findCustomer = async (time: string) => {
+    const findCustomer = async (yearsTime: string, time: string) => {
         try {
-            const res: any = await getData(`${CUSTOMER_STATISTICS}?companyId=${companyId}&date=${years}-${time}`)
+            const res: any = await getData(`${CUSTOMER_STATISTICS}?companyId=${companyId}&date=${yearsTime}-${time}`)
             if (res.success) {
                 if (res.model) {
                     let x: string[] = [];
@@ -100,7 +107,7 @@ const Customer: FC = (): ReactElement => {
                         let data = e.data;
                         return `￥ ${data}`
                     },
-                    fontSize: 16,
+                    fontSize: 14,
                     color: '#fff'
                 },
                 barWidth : 30,
@@ -118,11 +125,19 @@ const Customer: FC = (): ReactElement => {
                     <div className="customer-search">
                         <div className="title title-black">客户消费排行</div>
                         <div className="customer-searchRight">
-                            <div>
-                                2021年
+                            <div className="select">
+                                <select onChange={onChangeYears} value={yearsValue}>
+                                    <option label="全部" value="">全部</option>
+                                    <option label="2021" value="2021">2021</option>
+                                    <option label="2022" value="2022">2022</option>
+                                    <option label="2023" value="2023">2023</option>
+                                    <option label="2024" value="2024">2024</option>
+                                </select>
+                                <span></span>
                             </div>
                             <div className="select">
                                 <select onChange={onChange} value={value}>
+                                    <option label="全部" value="">全部</option>
                                     <option label="1月" value="01">1月</option>
                                     <option label="2月" value="02">2月</option>
                                     <option label="3月" value="03">3月</option>
