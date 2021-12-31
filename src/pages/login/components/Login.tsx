@@ -45,11 +45,10 @@ const Login: FC = (): ReactElement => {
                     const users = JSON.parse(userInfos)
                     const companyId = res.model.userCompanyOut.companyId
                     if (users.length) {
-                        users.map((item: any) => {
-                            if (item.userCompanyOut.companyId !== companyId) {
-                                localStorage.setItem('userInfos', JSON.stringify([...users, ...res.model]));
-                            }
-                        })
+                        const repeat = users.filter((item: any) => item.userCompanyOut.companyId === companyId)
+                        if (repeat.length === 0) {
+                            localStorage.setItem('userInfos', JSON.stringify([...users, res.model]));
+                        }
                     }
                 } else {
                     localStorage.setItem('userInfos', JSON.stringify([res.model]));

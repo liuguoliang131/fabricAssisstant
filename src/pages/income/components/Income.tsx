@@ -28,6 +28,29 @@ interface DataEarnings {
     price: number
 }
 
+function getDay (num: number) {
+    let myDate = new Date(); //获取今天日期
+    const years = myDate.getFullYear();
+    const months = (myDate.getMonth() + 1).toString()
+    const monthsData = months.length === 1 ? `0${months}` : months
+    const day = myDate.getDate().toString()
+    const dayData = day.length === 1 ? `0${day}` : day
+    myDate.setDate(myDate.getDate() - (num - 1));//setDate() 方法用于设置一个月的某一天。
+    let dateArray = [];
+    let dateTemp;
+    let flag = 1;
+    for (let i = 1; i < num; i++) {
+        const day = myDate.getDate().toString()
+        const dayData = day.length === 1 ? `0${day}` : day
+        dateTemp = `${years}-${monthsData}-${dayData}`;
+        dateArray.push(dateTemp);
+        myDate.setDate(myDate.getDate() + flag);
+    }
+    dateArray.push(`${years}-${monthsData}-${dayData}`);
+    return dateArray;
+}
+
+
 
 const Income: FC = (): ReactElement => {
 
@@ -36,6 +59,13 @@ const Income: FC = (): ReactElement => {
     const userInfo: any = localStorage.getItem('userInfo')
     const user = JSON.parse(userInfo)
     const companyId = user.userCompanyOut.companyId
+    const date = new Date();
+    const years = date.getFullYear();
+    const months = (date.getMonth() + 1).toString()
+    const monthsData = months.length === 1 ? `0${months}` : months
+    const day = date.getDate().toString()
+    const dayData = day.length === 1 ? `0${day}` : day
+
 
     const [dataIncome, setDataIncome] = useState<DataIncome>({
         balance: 0,
@@ -120,7 +150,7 @@ const Income: FC = (): ReactElement => {
     const getOption = {
         grid: {
             left: 0,
-            right: 0,
+            right: 20,
             bottom: 0,
             top: 20,
             containLabel: true
@@ -128,11 +158,12 @@ const Income: FC = (): ReactElement => {
         xAxis: {
             type: 'category',
             // boundaryGap: false,
-            data: xAxis,
+            data: xAxis.length ? xAxis : getDay(7),
             // y轴刻度线
             axisTick: {
                 show: false
-            }
+            },
+            scale:true,
         },
         yAxis: {
             type: 'value',
@@ -147,7 +178,9 @@ const Income: FC = (): ReactElement => {
             // 网格线
             splitLine: {
                 show: false
-            }
+            },
+            min: 0,
+            max: series.length ? (series.sort(function (a, b) {return b - a}))[0] : 8000
         },
         series: [
             {
@@ -169,34 +202,35 @@ const Income: FC = (): ReactElement => {
             <Header>收入统计</Header>
             <div className="main">
                 <div className="box">
-                    <div className="title title-black">收入情况</div>
+                    <div className="title title-black">收入情况  {years}/{monthsData}/{dayData}</div>
                     <div className="income-statistics">
-                        <span>支付宝：{dataIncome.zhifubao || 0}</span>
-                        <span>微信：{dataIncome.weixin || 0}</span>
-                        <span>银行：{dataIncome.bank || 0}</span>
-                        <span>现金：{dataIncome.money || 0}</span>
-                        <span>合计：{dataIncome.totalPrice || 0}</span>
+                        <span>支付宝：￥ {dataIncome.zhifubao || 0}</span>
+                        <span>微信：￥ {dataIncome.weixin || 0}</span>
+                        <span>银行：￥ {dataIncome.bank || 0}</span>
+                        <span>现金：￥ {dataIncome.money || 0}</span>
+                        <span>合计：￥ {dataIncome.totalPrice || 0}</span>
                         <div className="income-img">
                             <img src={require('../assets/income-income.png')} className="income-balance" />
                         </div>
                     </div>
                 </div>
                 <div className="box">
-                    <div className="title title-black title-account">账户余额</div>
+                    <div className="title title-black title-account">账户余额  {years}/{monthsData}/{dayData}</div>
                     <div className="income-statistics">
-                        <span>支付宝：{dataBalance.zhifubao || 0}</span>
-                        <span>微信：{dataBalance.weixin || 0}</span>
-                        <span>银行：{dataBalance.bank || 0}</span>
-                        <span>现金：{dataBalance.money || 0}</span>
-                        <span>合计：{dataBalance.totalPrice || 0}</span>
-                        <span></span>
-                        <span>余额消费：{dataIncome.balance}</span>
-                        <span>总余额：{dataBalance.balanceAll || 0}</span>
+                        <span>支付宝：￥ {dataBalance.zhifubao || 0}</span>
+                        <span>微信：￥ {dataBalance.weixin || 0}</span>
+                        <span>银行：￥ {dataBalance.bank || 0}</span>
+                        <span>现金：￥ {dataBalance.money || 0}</span>
+                        <span>合计：￥ {dataBalance.totalPrice || 0}</span>
+                        <span />
+                        <span>余额消费：￥ {dataIncome.balance}</span>
+                        <span>总余额：￥ {dataBalance.balanceAll || 0}</span>
                         <div className="income-img">
                             <img src={require('../assets/income-balance.png')} className="income-income" />
                         </div>
                     </div>
                 </div>
+                <div className="income-trend">今日收入趋势</div>
                 <div className="box">
                     <ReactECharts
                         option={getOption}

@@ -35,7 +35,7 @@ const Account: FC = (): ReactElement => {
                             <div className="box account-box" key={item.userCompanyOut.companyId} onClick={() => onClick(item)}>
                                 <div className="account-boxImg">
                                     <img src={item.logoPath} className="account-avatar" />
-                                    厚鸟科技
+                                    {item.userCompanyOut.companyName}
                                 </div>
                                 {
                                     item.userCompanyOut.companyId === companyId

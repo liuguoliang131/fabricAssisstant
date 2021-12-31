@@ -10,7 +10,6 @@ interface DataCustomer {
     price: number
 }
 
-
 const Customer: FC = (): ReactElement => {
 
     console.log(" =========== Customer 客户统计 =========== ");
@@ -95,17 +94,13 @@ const Customer: FC = (): ReactElement => {
                 data: series,
                 type: 'bar',
                 label: {
-                    normal: {
-                        show: true,
-                        formatter: (e: any) => {
-                            let data = e.data;
-                            return data > 100 ? `￥ ${data}` : ''
-                        },
-                        textStyle: {
-                            fontSize: 16,
-                            color: "#fff",
-                        },
-                    }
+                    show: true,
+                    formatter: (e: any) => {
+                        let data = e.data;
+                        return `￥ ${data}`
+                    },
+                    fontSize: 16,
+                    color: '#fff'
                 },
                 barWidth : 30,
                 color: '#7FA9FF',
@@ -120,7 +115,7 @@ const Customer: FC = (): ReactElement => {
             <div className="main" style={{background: '#ffffff', overflow: 'hidden'}}>
                 <div className="customer-content">
                     <div className="customer-search">
-                        <div className="title title-black">今日统计</div>
+                        <div className="title title-black">客户消费排行</div>
                         <div className="customer-searchRight">
                             <div>
                                 2021年

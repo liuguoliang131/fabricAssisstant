@@ -19,7 +19,8 @@ interface List {
     brandName: string,
     id: number,
     materialArticleNumber: string,
-    stockCount: number
+    stockCount: number,
+    unit: string
 }
 
 const Inventory: FC = (): ReactElement => {
@@ -44,22 +45,23 @@ const Inventory: FC = (): ReactElement => {
 
     const onChangeType = (e: any) => {
         setType(e.target.value)
+        findTable(1, e.target.value)
     }
 
     const screening = () => {
         if (dom) {
             dom.scrollTop = 0
         }
-        findTable(1);
+        findTable(1, type);
     }
 
     useEffect(() => {
-        findTable(1)
+        findTable(1, type)
     }, []);
 
-    const findTable = async (page: number) => {
+    const findTable = async (page: number, typeString: string) => {
         try {
-            const res: any = await getData(`${STOCK_STATISTICS}?pageNo=${page}&pageSize=${pageSize}&companyId=${companyId}&type=${type}&date=${years}-${monthsData}&articleNumber=${value}`)
+            const res: any = await getData(`${STOCK_STATISTICS}?pageNo=${page}&pageSize=${pageSize}&companyId=${companyId}&type=${typeString}&date=${years}-${monthsData}&articleNumber=${value}`)
             if (res.success) {
                 const params = {
                     lastPage: res.model.lastPage,
@@ -106,7 +108,7 @@ const Inventory: FC = (): ReactElement => {
             if (contentScrollTop + clientHeight >= scrollHeight) {
                 console.log(pageNo + 1 <= data.sumPage)
                 if (pageNo + 1 <= data.sumPage) {
-                    findTable(pageNo + 1);
+                    findTable(pageNo + 1, type);
                 }
             }
         }
@@ -138,14 +140,14 @@ const Inventory: FC = (): ReactElement => {
                         <div className="inventory-tableData">
                             <div className="inventory-table inventory-tableColumns">
                                 <div className="inventory-information">商品信息</div>
-                                {/*<div>上月结余</div>*/}
-                                {/*<div>采购</div>*/}
-                                {/*<div>*/}
-                                {/*    <div>*/}
-                                {/*        <div>消耗</div>*/}
-                                {/*        <div>待消耗</div>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
+                                <div>上月结余</div>
+                                <div>采购</div>
+                                <div>
+                                    <div>
+                                        <div>消耗</div>
+                                        <div>待消耗</div>
+                                    </div>
+                                </div>
                                 <div>库存</div>
                             </div>
                             <div
@@ -164,22 +166,22 @@ const Inventory: FC = (): ReactElement => {
                                                         className="inventory-title"
                                                     >货号：{item.materialArticleNumber}</div>
                                                 </div>
-                                                {/*<div>*/}
-                                                {/*    <div>400</div>*/}
-                                                {/*    <div className="inventory-unit">(米)</div>*/}
-                                                {/*</div>*/}
-                                                {/*<div>*/}
-                                                {/*    <div>400</div>*/}
-                                                {/*    <div className="inventory-unit">(米)</div>*/}
-                                                {/*</div>*/}
-                                                {/*<div>*/}
-                                                {/*    <div>400</div>*/}
-                                                {/*    <div>400</div>*/}
-                                                {/*    <div className="inventory-unit">(米)</div>*/}
-                                                {/*</div>*/}
+                                                <div>
+                                                    <div>/</div>
+                                                    <div className="inventory-unit"></div>
+                                                </div>
+                                                <div>
+                                                    <div>/</div>
+                                                    <div className="inventory-unit"></div>
+                                                </div>
+                                                <div>
+                                                    <div>/</div>
+                                                    {/*<div>/</div>*/}
+                                                    <div className="inventory-unit"></div>
+                                                </div>
                                                 <div>
                                                     <div>{item.stockCount | 0}</div>
-                                                    <div className="inventory-unit">(米)</div>
+                                                    <div className="inventory-unit">({item.unit})</div>
                                                 </div>
                                             </div>
                                         )
