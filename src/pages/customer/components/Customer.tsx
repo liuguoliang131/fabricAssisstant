@@ -132,6 +132,7 @@ const Customer: FC = (): ReactElement => {
                                     <option label="2022" value="2022">2022</option>
                                     <option label="2023" value="2023">2023</option>
                                     <option label="2024" value="2024">2024</option>
+                                    <option label="2025" value="2025">2025</option>
                                 </select>
                                 <span></span>
                             </div>
