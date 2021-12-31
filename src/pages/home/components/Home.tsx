@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useEffect, useState } from 'react';
 import './home.less';
 import { useHistory, Link } from "react-router-dom";
 import { getData } from "src/ts/requestUtil";
-import { TODAY_ORDER_STATISTICS } from "src/constants/api";
+import { ORDER_CATEGORY_COUNT, TODAY_ORDER_STATISTICS } from "src/constants/api";
 
 interface Res {
     code: string,
@@ -21,7 +21,8 @@ interface Data {
 
 interface List {
     categoryName: string,
-    toDayOrder: number
+    toDayOrder: number,
+    orderCount: number
 }
 
 const Home: FC = (): ReactElement => {
@@ -41,8 +42,11 @@ const Home: FC = (): ReactElement => {
         todayOrderOutList: []
     })
 
+    const [dataList, setDataList] = useState<any>({})
+
     useEffect(() => {
         findTodayOrder()
+        findOrder()
     }, []);
 
     const findTodayOrder = async () => {
@@ -50,6 +54,20 @@ const Home: FC = (): ReactElement => {
             const res: Res = await getData(`${TODAY_ORDER_STATISTICS}?companyId=${companyId}`)
             if (res.success) {
                 setData(res.model)
+            } else {
+                alert(res.msg)
+            }
+        } catch (e) {
+            console.log(e)
+            alert(e)
+        }
+    }
+
+    const findOrder = async () => {
+        try {
+            const res: any = await getData(`${ORDER_CATEGORY_COUNT}?companyId=${companyId}`)
+            if (res.success) {
+                setDataList(res.model)
             } else {
                 alert(res.msg)
             }
@@ -103,8 +121,8 @@ const Home: FC = (): ReactElement => {
                     <div className="title title-black">下单量</div>
                     <div className="home-order">
                         {
-                            data.todayOrderOutList.length ? data.todayOrderOutList.map((item: List) => {
-                                return (<span key={item.categoryName}>{item.categoryName}：{item.toDayOrder}</span>)
+                            dataList.length ? dataList.map((item: List) => {
+                                return (<span key={item.categoryName}>{item.categoryName}：{item.orderCount}</span>)
                             }) : <div className="noData">暂无数据</div>
                         }
                     </div>

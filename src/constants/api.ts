@@ -9,6 +9,8 @@ export const FILE_UPLOAD_URL = API_BASE_URL + '/file/upload';
 // 登陆
 export const LOGIN = '/orderStatistics/login';
 
+export const ORDER_CATEGORY_COUNT = '/orderStatistics/orderCategoryCount'
+
 // 订单监控
 export const ORDER_MONITOR = '/orderStatistics/orderMonitor';
 
