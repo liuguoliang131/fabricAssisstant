@@ -33,7 +33,6 @@ const AppLayoutRoutes: FC = (): ReactElement => {
                     <Route path={`/appLayout/performanceDetails/:userId`} component={PerformanceDetails} />
                     <Route path={`/appLayout/equipment`} component={Equipment} />
                     <Route path={`/appLayout/account`} component={Account} />
-                    <Route component={NoMatch} />
                     <Redirect to={`/appLayout/home`} />
                 </Switch>
             </Suspense>
