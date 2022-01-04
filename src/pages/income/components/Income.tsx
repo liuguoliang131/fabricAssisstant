@@ -180,7 +180,6 @@ const Income: FC = (): ReactElement => {
             splitLine: {
                 show: false
             },
-            min: 0,
             max: series.length ? (seriesY.sort(function (a: number, b: number) {return b - a}))[0] : 8000
         },
         series: [
