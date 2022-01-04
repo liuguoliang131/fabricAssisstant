@@ -122,6 +122,7 @@ const Income: FC = (): ReactElement => {
 
     const [xAxis, setXAxis] = useState<string[]>([])
     const [series, setSeries] = useState<number[]>([])
+    let seriesY = JSON.parse(JSON.stringify(series))
 
     const findEarnings = async () => {
         try {
@@ -180,7 +181,7 @@ const Income: FC = (): ReactElement => {
                 show: false
             },
             min: 0,
-            max: series.length ? (series.sort(function (a, b) {return b - a}))[0] : 8000
+            max: series.length ? (seriesY.sort(function (a: number, b: number) {return b - a}))[0] : 8000
         },
         series: [
             {

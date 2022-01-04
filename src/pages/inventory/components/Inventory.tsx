@@ -61,7 +61,7 @@ const Inventory: FC = (): ReactElement => {
 
     const findTable = async (page: number, typeString: string) => {
         try {
-            const res: any = await getData(`${STOCK_STATISTICS}?pageNo=${page}&pageSize=${pageSize}&companyId=${companyId}&type=${typeString}&date=${years}-${monthsData}&articleNumber=${value}`)
+            const res: any = await getData(`${STOCK_STATISTICS}?pageNo=${page}&pageSize=${pageSize}&companyId=${companyId}&type=${typeString}&articleNumber=${value}`)
             if (res.success) {
                 const params = {
                     lastPage: res.model.lastPage,
