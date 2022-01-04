@@ -69,6 +69,26 @@ function getFullDate(targetDate: number, fullYear: number, month: number) {
 }
 
 
+/**
+ * 数字转时分秒
+ * @param times number
+ * @return 00:00:00
+ */
+function setHis (times: number) {
+    if (times <= 0) {
+        return '00:00:00';
+    } else {
+        // 小时
+        let hh = parseInt((times / 3600).toString())
+        let shh = times - hh * 3600
+        let ii = parseInt((shh / 60).toString())
+        let ss = shh - ii * 60;
+        return (hh < 10 ? '0'+hh : hh) + ':' + (ii < 10 ? '0'+ii : ii) +':'+(ss < 10 ? '0'+ss : ss)
+    }
+}
+
+
+
 const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactElement => {
 
     console.log(" =========== PerformanceDetails 绩效工作详情 =========== ");
@@ -105,11 +125,11 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
     const [dataYear, setDataYear] = useState<DataAll[]>([])
     const [dataAll, setDataAll] = useState<DataDay[]>([])
 
-    const findPerformanceDay = async () => {
+    const findPerformanceAll = async () => {
         try {
             const res: any = await getData(`${FIND_STAFF_PROCEDURE_ALL}?userId=${userId}&companyId=${companyId}&startDate=${fullYear}-${monthsData}-${dayData} 00:00:00&endDate=${fullYear}-${monthsData}-${dayData} 23:59:59`)
             if (res.success) {
-                setDataDay(res.model)
+                setDataAll(res.model)
             } else {
                 alert(res.msg)
             }
@@ -121,7 +141,7 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
 
     const findPerformanceYear = async () => {
         try {
-            const res: any = await getData(`${FIND_STAFF_PROCEDURE_ALL}?userId=${userId}&companyId=${companyId}&startDate=${startDate} 00:00:00&endDate=${endDate} 23:59:59`)
+            const res: any = await getData(`${FIND_STAFF_RATIO_ALL}?userId=${userId}&companyId=${companyId}&startDate=${startDate} 00:00:00&endDate=${endDate} 23:59:59`)
             if (res.success) {
                 setDataYear(res.model)
             } else {
@@ -133,11 +153,12 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
         }
     }
 
-    const findPerformanceAll = async () => {
+    const findPerformanceDay = async () => {
         try {
             const res: any = await getData(`${FIND_STAFF_RATIO_ALL}?userId=${userId}&companyId=${companyId}&startDate=${fullYear}-${monthsData}-${dayData} 00:00:00&endDate=${fullYear}-${monthsData}-${dayData} 23:59:59`)
             if (res.success) {
-                setDataAll(res.model)
+                console.log(res)
+                setDataDay(res.model)
             } else {
                 alert(res.msg)
             }
@@ -174,7 +195,7 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
                                             </div>
                                             <div className="performance-workCon">
                                                 <div>超时总数：{item.overCount}</div>
-                                                <div></div>
+                                                <div />
                                             </div>
                                         </div>
                                     )
@@ -196,7 +217,7 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
                                             </div>
                                             <div className="performance-workCon">
                                                 <div>超时总数：{item.overCount}</div>
-                                                <div></div>
+                                                <div />
                                             </div>
                                         </div>
                                     )
@@ -228,7 +249,7 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
                                                         className="performance-falling"
                                                     />{item.freeTime}
                                                 </div>
-                                                <div></div>
+                                                <div />
                                             </div>
                                             <div className="performance-workCon">
                                                 <div>超时时间：{item.overTime}</div>
