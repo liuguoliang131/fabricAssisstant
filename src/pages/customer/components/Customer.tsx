@@ -111,6 +111,7 @@ const Customer: FC = (): ReactElement => {
                     fontSize: 14,
                     color: '#333'
                 },
+                barMinHeight: 1,
                 barWidth : 30,
                 color: '#7FA9FF',
                 smooth: false
