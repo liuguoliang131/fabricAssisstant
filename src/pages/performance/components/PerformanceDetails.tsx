@@ -171,7 +171,7 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
     return (
         <div className="performance">
             <Header>绩效工作详情</Header>
-            <div className="main">
+            <div className="main" style={{padding: 0}}>
                 {
                     dataDay.length || dataYear.length
                         ?
