@@ -28,7 +28,7 @@ interface DataDay {
     // 工序名称
     procedureName: string,
     // 标准用时 （秒）
-    standardTime: string
+    standardTime: number
 }
 
 interface DataAll {
@@ -185,12 +185,12 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
                                             >{item.userName}{monthsData}月{dayData}日工作情况
                                             </div>
                                             <div className="performance-workCon">
-                                                <div>空闲时间：{item.freeSecondAll}</div>
-                                                <div>超长时长：<span style={{color: '#FF4F2C'}}>{item.overSecondAll}</span>
+                                                <div>空闲时间：{setHis(item.freeSecondAll)}</div>
+                                                <div>超长时长：<span style={{color: '#FF4F2C'}}>{setHis(item.overSecondAll)}</span>
                                                 </div>
                                             </div>
                                             <div className="performance-workCon">
-                                                <div>工作时间：{item.finishSecondAll}</div>
+                                                <div>工作时间：{setHis(item.finishSecondAll)}</div>
                                                 <div>工序总数：{item.count}</div>
                                             </div>
                                             <div className="performance-workCon">
@@ -207,12 +207,12 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
                                         <div className="performance-work" key={index}>
                                             <div className="performance-workTit">{item.userName}{monthsData}月工作情况</div>
                                             <div className="performance-workCon">
-                                                <div>空闲时间：{item.freeSecondAll}</div>
-                                                <div>超长时长：<span style={{color: '#FF4F2C'}}>{item.overSecondAll}</span>
+                                                <div>空闲时间：{setHis(item.freeSecondAll)}</div>
+                                                <div>超长时长：<span style={{color: '#FF4F2C'}}>{setHis(item.overSecondAll)}</span>
                                                 </div>
                                             </div>
                                             <div className="performance-workCon">
-                                                <div>工作时间：{item.finishSecondAll}</div>
+                                                <div>工作时间：{setHis(item.finishSecondAll)}</div>
                                                 <div>工序总数：{item.count}</div>
                                             </div>
                                             <div className="performance-workCon">
@@ -239,20 +239,20 @@ const PerformanceDetails: FC<IProps & RouteComponentProps> = (props): ReactEleme
                                                 className="performance-workTit" style={{textAlign: 'left'}}
                                             >{item.procedureName}</div>
                                             <div className="performance-workCon">
-                                                <div>平时用时：{item.avgTime}</div>
-                                                <div>标准用时：{item.standardTime}</div>
+                                                <div>平时用时：{setHis(item.avgTime)}</div>
+                                                <div>标准用时：{setHis(item.standardTime)}</div>
                                             </div>
                                             <div className="performance-workCon">
                                                 <div>
                                                     <img
                                                         src={require(item.freeTime > 0 ? '../assets/rising.png' : '../assets/falling.png')}
                                                         className="performance-falling"
-                                                    />{item.freeTime}
+                                                    />{item.freeTime > 0 ? setHis(item.freeTime) : setHis(-item.freeTime)}
                                                 </div>
                                                 <div />
                                             </div>
                                             <div className="performance-workCon">
-                                                <div>超时时间：{item.overTime}</div>
+                                                <div>超时时间：{setHis(item.overTime)}</div>
                                                 <div>超时个数：{item.overCount}</div>
                                             </div>
                                         </div>
