@@ -23,7 +23,7 @@ const Customer: FC = (): ReactElement => {
     const months = (date.getMonth() + 1).toString()
     const monthsData = months.length === 1 ? `0${months}` : months
 
-    const [value, setValue] = useState(months)
+    const [value, setValue] = useState(monthsData)
 
     const [yearsValue, setYearsValue] = useState(years)
 
@@ -136,7 +136,7 @@ const Customer: FC = (): ReactElement => {
                                     <option label="2024" value="2024">2024</option>
                                     <option label="2025" value="2025">2025</option>
                                 </select>
-                                <span></span>
+                                <span />
                             </div>
                             <div className="select">
                                 <select onChange={onChange} value={value}>
@@ -154,7 +154,7 @@ const Customer: FC = (): ReactElement => {
                                     <option label="11月" value="11">11月</option>
                                     <option label="12月" value="12">12月</option>
                                 </select>
-                                <span></span>
+                                <span />
                             </div>
                         </div>
                     </div>
