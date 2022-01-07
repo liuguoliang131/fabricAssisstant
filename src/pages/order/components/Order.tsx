@@ -92,12 +92,12 @@ const Order: FC = (): ReactElement => {
 
     const findOrderNum = async () => {
         try {
-            const res: any = await getData(`${SELECT_ORDER_COUNT}?companyId=${companyId}`)
-            if (res.success) {
-                setDataNum(res.model)
-            } else {
-                alert(res.msg)
-            }
+            // const res: any = await getData(`${SELECT_ORDER_COUNT}?companyId=${companyId}`)
+            // if (res.success) {
+            //     setDataNum(res.model)
+            // } else {
+            //     alert(res.msg)
+            // }
         } catch (e) {
             console.log(e)
             alert(e)
@@ -142,7 +142,7 @@ const Order: FC = (): ReactElement => {
                         {/*</div>*/}
                         <div className="order-screening" onClick={screening}>筛选</div>
                     </div>
-                    <div className="order-order">订单数量：<span style={{fontWeight: 'bold'}}>{dataNum}</span></div>
+                    <div className="order-order">订单数量：<span style={{fontWeight: 'bold'}}>{data.sumRow}</span></div>
                     <div
                         className="order-main" ref={(dom) => {
                         setDom(dom)
