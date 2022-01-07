@@ -136,10 +136,10 @@ const Order: FC = (): ReactElement => {
                         <div className="input">
                             <input type="text" placeholder="请输入企业名称" value={nameVal} onChange={onNameChange} />
                         </div>
-                        <div className="input order-input">
-                            <img className="searchImg" src={require('../../../components/assets/search.png')} />
-                            <input type="text" placeholder="请输入订单号" value={orderVal} onChange={onOrderChange} />
-                        </div>
+                        {/*<div className="input order-input">*/}
+                        {/*    <img className="searchImg" src={require('../../../components/assets/search.png')} />*/}
+                        {/*    <input type="text" placeholder="请输入订单号" value={orderVal} onChange={onOrderChange} />*/}
+                        {/*</div>*/}
                         <div className="order-screening" onClick={screening}>筛选</div>
                     </div>
                     <div className="order-order">订单数量：<span style={{fontWeight: 'bold'}}>{dataNum}</span></div>
