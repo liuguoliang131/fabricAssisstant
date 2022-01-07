@@ -34,7 +34,7 @@ const Account: FC = (): ReactElement => {
                         return (
                             <div className="box account-box" key={item.userCompanyOut.companyId} onClick={() => onClick(item)}>
                                 <div className="account-boxImg">
-                                    <img src={item.logoPath} className="account-avatar" />
+                                    <img src={item.logoPath ? item.logoPath : require('../assets/default.png')} className="account-avatar" />
                                     {item.userCompanyOut.companyName}
                                 </div>
                                 {

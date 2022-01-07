@@ -91,7 +91,7 @@ const Home: FC = (): ReactElement => {
         <div className="home">
             <div className="home-header">
                 <div className="home-headerLeft" onClick={account}>
-                    <img src={logoPath} className="home-avatar" />
+                    <img src={logoPath ? logoPath : require('../assets/default.png')} className="home-avatar" />
                       {companyName}
                 </div>
                 <div>
