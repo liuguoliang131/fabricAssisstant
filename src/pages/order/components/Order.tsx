@@ -124,6 +124,7 @@ const Order: FC = (): ReactElement => {
         if (dom) {
             dom.scrollTop = 0
         }
+
         findOrder(nameVal, orderVal, 1)
     }
 
