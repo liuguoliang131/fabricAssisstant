@@ -52,7 +52,7 @@ const Order: FC = (): ReactElement => {
     }, []);
 
     const [pageNo, setPageNo] = useState<number>(1)
-    const [pageSize, setPageSize] = useState<number>(10)
+    const [pageSize, setPageSize] = useState<number>(20)
 
     const [data, setData] = useState<Data>({
         lastPage: false,
