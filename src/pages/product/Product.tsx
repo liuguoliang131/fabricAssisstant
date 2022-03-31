@@ -3,7 +3,7 @@ import Header from "components/header/Header";
 import Popup from './components/Popup/Popup'
 import './Product.less'
 import { getData } from "src/ts/requestUtil";
-import { FIND_STAFF_RATIO,JOIN_HOUSE_COUNT ,JOIN_HOUSE_COUNT_BY_UUID} from "src/constants/api";
+import { JOIN_HOUSE_COUNT} from "src/constants/api";
 import { useHistory } from "react-router-dom";
 
 interface List {
