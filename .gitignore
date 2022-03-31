@@ -18,3 +18,5 @@ tmp/
 /bin/
 
 node_modules/
+
+/dist

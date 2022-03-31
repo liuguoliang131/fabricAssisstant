@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useEffect, useState } from 'react';
 import './home.less';
 import { useHistory, Link } from "react-router-dom";
 import { getData } from "src/ts/requestUtil";
-import { ORDER_CATEGORY_COUNT, TODAY_ORDER_STATISTICS } from "src/constants/api";
+import { TODAY_ORDER_STATISTICS, TODAY_ORDER_COUNT } from "src/constants/api";
 
 interface Res {
     code: string,
@@ -48,10 +48,10 @@ const Home: FC = (): ReactElement => {
         findTodayOrder()
         findOrder()
     }, []);
-
+    // 今日订单数量
     const findTodayOrder = async () => {
         try {
-            const res: Res = await getData(`${TODAY_ORDER_STATISTICS}?companyId=${companyId}`)
+            const res: Res = await getData(`${TODAY_ORDER_COUNT}?companyId=${companyId}`)
             if (res.success) {
                 setData(res.model)
             } else {
@@ -62,10 +62,10 @@ const Home: FC = (): ReactElement => {
             alert(e)
         }
     }
-
+    // 下单量
     const findOrder = async () => {
         try {
-            const res: any = await getData(`${ORDER_CATEGORY_COUNT}?companyId=${companyId}`)
+            const res: any = await getData(`${TODAY_ORDER_STATISTICS}?companyId=${companyId}`)
             if (res.success) {
                 setDataList(res.model)
             } else {
@@ -103,11 +103,11 @@ const Home: FC = (): ReactElement => {
                     <div className="title">今日统计</div>
                     <div className="home-statisticalCon">
                         <div className="home-statisticalConLeft">
-                            <div>
+                            {/* <div>
                                 <span className="home-money">￥</span>
                                 <span className="home-number">{data.todayPrice || 0}</span>
                             </div>
-                            <div className="home-today">今日收入</div>
+                            <div className="home-today">今日收入</div> */}
                         </div>
                         <div className="home-statisticalConRight">
                             <div>
@@ -122,7 +122,7 @@ const Home: FC = (): ReactElement => {
                     <div className="home-order">
                         {
                             dataList.length ? dataList.map((item: List) => {
-                                return (<span key={item.categoryName}>{item.categoryName}：{item.orderCount}</span>)
+                                return (<span key={item.categoryName}>{item.categoryName}：{item.toDayOrder}</span>)
                             }) : <div className="noData">暂无数据</div>
                         }
                     </div>
@@ -157,7 +157,11 @@ const Home: FC = (): ReactElement => {
                             <img src={require('../assets/equipment.png')} className="home-equipment" />
                             <div className="home-queryText">设备管理</div>
                         </Link>
-                        <a />
+                        <Link to={`/appLayout/product`}>
+                            <img src={require('../assets/product.png')} className="home-equipment" />
+                            <div className="home-queryText">成品统计</div>
+                        </Link>
+                        {/* <a /> */}
                     </div>
                 </div>
             </div>

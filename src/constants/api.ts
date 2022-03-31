@@ -41,8 +41,17 @@ export const TODAY_ORDER_BALANCER = '/orderStatistics/todayOrderBalancer';
 // 收入统计-收入情况
 export const TODAY_ORDER_INCOMER = '/orderStatistics/todayOrderIncomer';
 
-// 今日订单统计
+// 今日订单统计 下单量
 export const TODAY_ORDER_STATISTICS = '/orderStatistics/todayOrderStatistics';
 
 // 所有设备
 export const ALL_EQUIPMENT_LIST = '/orderStatistics/allEquipmentList';
+
+// 今日订单数量
+export const TODAY_ORDER_COUNT = '/orderStatistics/todayOrderCount'
+
+// 成品统计列表
+export const JOIN_HOUSE_COUNT = '/orderStatistics/joinHouseCount'
+
+// 查询成品入库发货统计（根据服装品类查询）  
+export const JOIN_HOUSE_COUNT_BY_UUID = '/orderStatistics/joinHouseCountByUuid'

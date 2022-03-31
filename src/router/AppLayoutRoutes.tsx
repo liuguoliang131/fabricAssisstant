@@ -17,6 +17,7 @@ const Account = lazy(() => import("../pages/account/components/Account"))
 const Performance = lazy(() => import("../pages/performance/components/Performance"))
 const PerformanceDetails = lazy(() => import("../pages/performance/components/PerformanceDetails"))
 const Equipment = lazy(() => import("../pages/equipment/components/Equipment"))
+const Product = lazy(() => import("../pages/product/Product"))
 
 const AppLayoutRoutes: FC = (): ReactElement => {
 
@@ -32,6 +33,8 @@ const AppLayoutRoutes: FC = (): ReactElement => {
                     <Route path={`/appLayout/performance`} component={Performance} />
                     <Route path={`/appLayout/performanceDetails/:userId`} component={PerformanceDetails} />
                     <Route path={`/appLayout/equipment`} component={Equipment} />
+                    {/* /appLayout/product */}
+                    <Route path={`/appLayout/product`} component={Product} />
                     <Route path={`/appLayout/account`} component={Account} />
                     <Redirect to={`/appLayout/home`} />
                 </Switch>
