@@ -95,7 +95,8 @@ const Product: FC = (): ReactElement => {
           <Header exitHide={true}>成品统计</Header>
           <div className="product-views">
             <div className="search">
-              <input type="text" value={customerName} onChange={handleChange} />
+              <img className='search-ico' src={require('./assets/search-ico.png')} alt="search" />
+              <input type="text" placeholder='企业名称' value={customerName} onChange={handleChange} />
               <button onClick={handleSearch}>筛选</button>
             </div>
           </div>
