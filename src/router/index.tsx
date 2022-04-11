@@ -28,6 +28,7 @@ const AppRoutes: FC = (): ReactElement => {
             <Suspense fallback={<div className="webLoading">加载中...</div>}>
                 <Switch>
                     {/* 登录 */}
+                    <Route exact path={`/:id`} component={Login} />
                     <Route exact path={`/`} component={Login} />
                     <Route path={`/agreement`} component={Agreement} />
                     {/* 主体 */}

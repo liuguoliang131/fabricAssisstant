@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { getData } from "src/ts/requestUtil";
 import './login.less';
-import { LOGIN } from "src/constants/api";
+import { LOGIN, COMPANY_FIND } from "src/constants/api";
 
 
 const Login: FC = (): ReactElement => {
@@ -12,14 +12,41 @@ const Login: FC = (): ReactElement => {
     let history = useHistory();
 
     useEffect(() => {
-        const userInfo: any = localStorage.getItem('userInfo')
-        if (userInfo) {
-            history.push(`/appLayout/home`)
-        }
+      getCustomerData()
+      const userInfo: any = localStorage.getItem('userInfo')
+      if (userInfo) {
+          history.push(`/appLayout/home`)
+      }
     }, []);
-
+    const [ customerData, setCustomerData ] = useState({
+      companyName:'厚鸟科技',
+      backgroundPath: require('../assets/bg@2x.png'),
+      logoPath:require('../assets/LOGO@2x.png')
+    });
     const [name, setName] = useState('');
     const [pass, setPass] = useState('');
+
+    // 获取logo 背景图和公司名称
+    const getCustomerData = async ()=> {
+      try {
+        let url = window.location.href
+        console.log('url',url)
+        if(!url.includes('id=')) {
+          return false
+        }
+        const companyId = url.split('id=')[1]
+        const res: any = await getData(`${COMPANY_FIND}?companyId=${companyId}&projectId=4`)
+        if(!res.success) {
+          alert(res.msg)
+        }
+        if(!res.model) {
+          return false
+        }
+        setCustomerData(res.model)
+      } catch (error) {
+        throw error
+      }
+    }
 
     const onNameChange = (e: any): void => {
         setName(e.target.value)
@@ -66,12 +93,12 @@ const Login: FC = (): ReactElement => {
 
     return (
         <div className="login">
-            <img
-                className="login-bg"
-                src={require('../assets/bg.jpg')}
-            />
+            <div className="image-box">
+              <img className="login-bg" src={customerData.backgroundPath}/>
+              <img className="login-logo" src={customerData.logoPath} />
+            </div>
             <div className="login-con">
-                <div className="login-name">厚鸟助手</div>
+                <div className="login-name">{customerData.companyName}</div>
                 <div className="login-form">
                     <form onSubmit={handelSubmit}>
                         <div className="login-formInput">
@@ -79,7 +106,7 @@ const Login: FC = (): ReactElement => {
                             <input
                                 className="login-formUserInput"
                                 type="text"
-                                placeholder="请输入厚鸟账号"
+                                placeholder="请输入账号"
                                 value={name}
                                 onChange={onNameChange}
                             />
