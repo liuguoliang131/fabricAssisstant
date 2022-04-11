@@ -60,7 +60,7 @@ const Login: FC = (): ReactElement => {
         // 一点提交就会刷新，阻止submit事件
         e.preventDefault();
         if (name === '') {
-            return alert('请输入厚鸟账号')
+            return alert('请输入账号')
         } else if (pass === '') {
             return alert('请输入密码')
         }
