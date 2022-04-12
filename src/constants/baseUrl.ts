@@ -4,7 +4,7 @@
 // export const API_BASE_URL = 'http://factory.ouryou.cn';
 //后端api url 开发
 // export const API_BASE_URL = 'http://192.168.0.250:8096';
-export const API_BASE_URL = 'http://192.168.0.100:9001';
+export const API_BASE_URL = 'http://192.168.0.23:8096';
 //前端访问地址
 export const BASE_URL = 'http://localhost:3001';
 //打包文件夹

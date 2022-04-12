@@ -15,17 +15,28 @@ interface Data {
 }
 
 interface List {
-    categoryName: string | null,
-    checkCount: number,
-    contacts: string | null,
-    customerName: string | null,
-    cutCount: number,
-    ironingCount: number,
     orderCount: number,
-    orderId: number,
-    produceCount: number,
-    uuid: string,
-    name: string
+    name: string,
+    createTime: string,
+    id: number,
+    orderCustomerName:string,
+    webOrderTypeOuts:OrderTypeOuts[]
+}
+
+interface OrderTypeOuts {
+  categoryName: string,
+  count: number,
+  finishCutCount: number,
+  id: number,
+  produceDetailOutList:DetailOutList
+}
+interface DetailOutList {
+  checkCount: number,
+  cutCount: number,
+  ironingCount: number,
+  plateCount: number,
+  produceCount: number,
+  sendGoodsCount: number
 }
 
 const Order: FC = (): ReactElement => {
@@ -61,7 +72,7 @@ const Order: FC = (): ReactElement => {
         startIndex: 0,
         sumPage: 0,
         sumRow: 0,
-        data: []
+        data: [],
     })
 
     const findOrder = async (name: string, order: string, page: number) => {
@@ -153,21 +164,27 @@ const Order: FC = (): ReactElement => {
                             data.data.length
                                 ?
                                 data.data.map((item, index) => {
-                                    return <div className="order-con" key={index}>
-                                        <div className="order-conLeft">
-                                            <div>{item.customerName}-{item.contacts}</div>
-                                            <div>{item.name}x{item.orderCount}</div>
-                                        </div>
-                                        <div className="order-conRight">
-                                            <div className="order-conRightBg1">裁剪{item.cutCount}</div>
-                                            <div className="order-conRightBg2">生产{item.produceCount}</div>
-                                            <div className="order-conRightBg3">整烫{item.ironingCount}</div>
-                                            <div className="order-conRightBg4">检验{item.checkCount}</div>
-                                            {/*{*/}
-                                            {/*    <div className="order-conRightBg5">发货</div>*/}
-                                            {/*}*/}
-                                        </div>
+                                  return (
+                                    <div className="order-con" key={index}>
+                                      <div className="order-con-title">{item.orderCustomerName}-{item.name}</div>
+                                      {item.webOrderTypeOuts.map(order=>{
+                                        return (
+                                          <div className="order-con-content">
+                                            <div className="order-conLeft">
+                                                <div>{order.categoryName}x{order.count}</div>
+                                            </div>
+                                            <div className="order-conRight">
+                                              <div className="order-conRightBg1">裁剪{order.produceDetailOutList.cutCount}</div>
+                                              <div className="order-conRightBg2">生产{order.produceDetailOutList.produceCount}</div>
+                                              <div className="order-conRightBg3">制版{order.produceDetailOutList.plateCount}</div>
+                                              <div className="order-conRightBg4">检验{order.produceDetailOutList.checkCount}</div>
+                                              <div className="order-conRightBg5">发货{order.produceDetailOutList.sendGoodsCount}</div>
+                                            </div>
+                                          </div>
+                                        )
+                                      })}
                                     </div>
+                                  )
                                 })
                                 : <div className="noData">暂无数据</div>
                         }
