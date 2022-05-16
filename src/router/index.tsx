@@ -4,7 +4,7 @@
  */
 import React, { Suspense, lazy, FC, ReactElement } from "react";
 import { Route, Switch, Redirect, Router } from "react-router-dom";
-import { createBrowserHistory as createHistory } from "history"; // 锚点模式的history createBrowserHistory  createHashHistory
+import { createHashHistory as createHistory } from "history"; // 锚点模式的history createBrowserHistory  createHashHistory
 // 创建一个浏览器历史记录
 export const history = createHistory();
 import AppLayoutRoutes from './AppLayoutRoutes';
