@@ -53,9 +53,12 @@ export const TODAY_ORDER_COUNT = '/orderStatistics/todayOrderCount'
 // 成品统计列表
 export const JOIN_HOUSE_COUNT = '/orderStatistics/joinHouseCount'
 
-// 查询成品入库发货统计（根据服装品类查询）  
+// 查询成品入库发货统计（根据服装品类查询）
 export const JOIN_HOUSE_COUNT_BY_UUID = '/orderStatistics/joinHouseCountByUuid'
 
 
 // 查询企业信息
 export const COMPANY_FIND = '/company/find'
+
+// 首页下单量
+export const PLACE_ORDER_COUNT = '/orderStatistics/placeOrderCount'

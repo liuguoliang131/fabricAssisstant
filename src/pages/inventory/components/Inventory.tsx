@@ -20,7 +20,9 @@ interface List {
     id: number,
     materialArticleNumber: string,
     stockCount: number,
-    unit: string
+    unit: string,
+    articleNumber: string,
+    goodsName: string
 }
 
 const Inventory: FC = (): ReactElement => {
@@ -102,7 +104,7 @@ const Inventory: FC = (): ReactElement => {
     // 监听页面滚动
     const handleOnScroll = () => {
         if (dom) {
-            const contentScrollTop = dom.scrollTop; //滚动条距离顶部
+            const contentScrollTop = dom.scrollTop + 1; //滚动条距离顶部
             const clientHeight = dom.clientHeight; //可视区域
             const scrollHeight = dom.scrollHeight; //滚动条内容的总高度
             if (contentScrollTop + clientHeight >= scrollHeight) {
@@ -160,11 +162,11 @@ const Inventory: FC = (): ReactElement => {
                                         return (
                                             <div className="inventory-table inventory-tableList" key={index}>
                                                 <div className="inventory-information">
-                                                    <div className="inventory-title">名称：{item.bookName}</div>
+                                                    <div className="inventory-title">名称：{item.goodsName}</div>
                                                     <div className="inventory-title">品牌：{item.brandName}</div>
                                                     <div
                                                         className="inventory-title"
-                                                    >货号：{item.materialArticleNumber}</div>
+                                                    >货号：{item.articleNumber}</div>
                                                 </div>
                                                 <div>
                                                     <div>/</div>
@@ -181,7 +183,9 @@ const Inventory: FC = (): ReactElement => {
                                                 </div>
                                                 <div>
                                                     <div>{item.stockCount | 0}</div>
-                                                    <div className="inventory-unit">({item.unit})</div>
+                                                    {
+                                                        item.unit ? <div className="inventory-unit">({item.unit})</div> : null
+                                                    }
                                                 </div>
                                             </div>
                                         )

@@ -120,7 +120,7 @@ const Order: FC = (): ReactElement => {
     // 监听页面滚动
     const handleOnScroll = () => {
         if (dom) {
-            const contentScrollTop = dom.scrollTop; //滚动条距离顶部
+            const contentScrollTop = dom.scrollTop + 1; //滚动条距离顶部
             const clientHeight = dom.clientHeight; //可视区域
             const scrollHeight = dom.scrollHeight; //滚动条内容的总高度
             if (contentScrollTop + clientHeight >= scrollHeight) {
@@ -167,9 +167,9 @@ const Order: FC = (): ReactElement => {
                                   return (
                                     <div className="order-con" key={index}>
                                       <div className="order-con-title">{item.orderCustomerName}-{item.name}</div>
-                                      {item.webOrderTypeOuts.map(order=>{
+                                      {item.webOrderTypeOuts.map((order, idx)=>{
                                         return (
-                                          <div className="order-con-content">
+                                          <div className="order-con-content" key={idx}>
                                             <div className="order-conLeft">
                                                 <div>{order.categoryName}x{order.count}</div>
                                             </div>

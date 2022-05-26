@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useEffect, useState } from 'react';
 import './home.less';
 import { useHistory, Link } from "react-router-dom";
 import { getData } from "src/ts/requestUtil";
-import { TODAY_ORDER_STATISTICS, TODAY_ORDER_COUNT } from "src/constants/api";
+import { TODAY_ORDER_STATISTICS, TODAY_ORDER_COUNT, PLACE_ORDER_COUNT } from "src/constants/api";
 
 interface Res {
     code: string,
@@ -22,7 +22,8 @@ interface Data {
 interface List {
     categoryName: string,
     toDayOrder: number,
-    orderCount: number
+    orderCount: number,
+    count: number
 }
 
 const Home: FC = (): ReactElement => {
@@ -36,11 +37,7 @@ const Home: FC = (): ReactElement => {
     const logoPath = user.logoPath
 
     let history = useHistory();
-    const [data, setData] = useState<Data>({
-        todayOrderCount: 0,
-        todayPrice: null,
-        todayOrderOutList: []
-    })
+    const [data, setData] = useState<Data>()
 
     const [dataList, setDataList] = useState<any>({})
 
@@ -65,7 +62,7 @@ const Home: FC = (): ReactElement => {
     // 下单量
     const findOrder = async () => {
         try {
-            const res: any = await getData(`${TODAY_ORDER_STATISTICS}?companyId=${companyId}`)
+            const res: any = await getData(`${PLACE_ORDER_COUNT}?companyId=${companyId}`)
             if (res.success) {
                 setDataList(res.model)
             } else {
@@ -111,7 +108,7 @@ const Home: FC = (): ReactElement => {
                         </div>
                         <div className="home-statisticalConRight">
                             <div>
-                                <span className="home-number">{data.todayOrderCount || 0}</span>
+                                <span className="home-number">{data || 0}</span>
                             </div>
                             <div className="home-today">今日订单</div>
                         </div>
@@ -122,7 +119,7 @@ const Home: FC = (): ReactElement => {
                     <div className="home-order">
                         {
                             dataList.length ? dataList.map((item: List) => {
-                                return (<span key={item.categoryName}>{item.categoryName}：{item.toDayOrder}</span>)
+                                return (<span key={item.categoryName}>{item.categoryName}：{item.count}</span>)
                             }) : <div className="noData">暂无数据</div>
                         }
                     </div>
