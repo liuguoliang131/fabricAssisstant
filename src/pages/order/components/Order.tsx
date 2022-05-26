@@ -167,18 +167,18 @@ const Order: FC = (): ReactElement => {
                                   return (
                                     <div className="order-con" key={index}>
                                       <div className="order-con-title">{item.orderCustomerName}-{item.name}</div>
-                                      {item.webOrderTypeOuts.map((order, idx)=>{
+                                      {item.webOrderTypeOuts.map((order, idx) => {
                                         return (
                                           <div className="order-con-content" key={idx}>
                                             <div className="order-conLeft">
                                                 <div>{order.categoryName}x{order.count}</div>
                                             </div>
                                             <div className="order-conRight">
-                                              <div className="order-conRightBg1">裁剪{order.produceDetailOutList.cutCount}</div>
-                                              <div className="order-conRightBg2">生产{order.produceDetailOutList.produceCount}</div>
-                                              <div className="order-conRightBg3">制版{order.produceDetailOutList.plateCount}</div>
-                                              <div className="order-conRightBg4">检验{order.produceDetailOutList.checkCount}</div>
-                                              <div className="order-conRightBg5">发货{order.produceDetailOutList.sendGoodsCount}</div>
+                                              <div className="order-conRightBg1">裁剪{order.produceDetailOutList.cutCount || 0}</div>
+                                              <div className="order-conRightBg2">生产{order.produceDetailOutList.produceCount || 0}</div>
+                                              <div className="order-conRightBg3">制版{order.produceDetailOutList.plateCount || 0}</div>
+                                              <div className="order-conRightBg4">检验{order.produceDetailOutList.checkCount || 0}</div>
+                                              <div className="order-conRightBg5">发货{order.produceDetailOutList.sendGoodsCount || 0}</div>
                                             </div>
                                           </div>
                                         )
