@@ -19,24 +19,26 @@ interface List {
     name: string,
     createTime: string,
     id: number,
-    orderCustomerName:string,
-    webOrderTypeOuts:OrderTypeOuts[]
+    orderCustomerName: string,
+    webOrderTypeOuts: OrderTypeOuts[]
 }
 
 interface OrderTypeOuts {
-  categoryName: string,
-  count: number,
-  finishCutCount: number,
-  id: number,
-  produceDetailOutList:DetailOutList
+    createTime: string,
+    categoryName: string,
+    count: number,
+    finishCutCount: number,
+    id: number,
+    produceDetailOutList: DetailOutList
 }
+
 interface DetailOutList {
-  checkCount: number,
-  cutCount: number,
-  ironingCount: number,
-  plateCount: number,
-  produceCount: number,
-  sendGoodsCount: number
+    checkCount: number,
+    cutCount: number,
+    ironingCount: number,
+    plateCount: number,
+    produceCount: number,
+    sendGoodsCount: number
 }
 
 const Order: FC = (): ReactElement => {
@@ -139,6 +141,22 @@ const Order: FC = (): ReactElement => {
         findOrder(nameVal, orderVal, 1)
     }
 
+    const formatDate = (t: any) => {
+        let v = new Date(t);
+        console.log(t.replace(/-/g, "/"), v.getDate() + 1 < 10)
+        if(v){
+            // 将Date()对象转成YYYY-MM-DD HH:MM:SS格式
+            const year = v.getFullYear()
+            const month = v.getMonth() + 1 < 10 ? `0${v.getMonth() + 1 }`: v.getMonth()
+            const day = v.getDate() + 1 <= 10 ? `0${v.getDate()}`: v.getDate()
+            const hour = v.getHours() < 10 ? `0${v.getHours()}`: v.getHours()
+            const minute = v.getMinutes() < 10 ? `0${v.getMinutes()}`: v.getMinutes()
+            const second = v.getSeconds() < 10 ? `0${v.getSeconds()}`: v.getSeconds()
+            return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+        }
+        return ''
+    }
+
     return (
         <div className="order">
             <Header>订单监控</Header>
@@ -164,27 +182,38 @@ const Order: FC = (): ReactElement => {
                             data.data.length
                                 ?
                                 data.data.map((item, index) => {
-                                  return (
-                                    <div className="order-con" key={index}>
-                                      <div className="order-con-title">{item.orderCustomerName}-{item.name}</div>
-                                      {item.webOrderTypeOuts.map((order, idx) => {
-                                        return (
-                                          <div className="order-con-content" key={idx}>
-                                            <div className="order-conLeft">
-                                                <div>{order.categoryName}x{order.count}</div>
-                                            </div>
-                                            <div className="order-conRight">
-                                              <div className="order-conRightBg1">裁剪{order.produceDetailOutList.cutCount || 0}</div>
-                                              <div className="order-conRightBg2">生产{order.produceDetailOutList.produceCount || 0}</div>
-                                              <div className="order-conRightBg3">制版{order.produceDetailOutList.plateCount || 0}</div>
-                                              <div className="order-conRightBg4">检验{order.produceDetailOutList.checkCount || 0}</div>
-                                              <div className="order-conRightBg5">发货{order.produceDetailOutList.sendGoodsCount || 0}</div>
-                                            </div>
-                                          </div>
-                                        )
-                                      })}
-                                    </div>
-                                  )
+                                    return (
+                                        <div className="order-con" key={index}>
+                                            <div className="order-con-title">{item.orderCustomerName}-{item.name}</div>
+                                            {item.webOrderTypeOuts.map((order, idx) => {
+                                                return (
+                                                    <div className="order-con-content" key={idx}>
+                                                        <div className="order-conLeft">
+                                                            <div>{order.categoryName}x{order.count}</div>
+                                                            <div>下单时间：{formatDate(item.createTime)}</div>
+                                                        </div>
+                                                        <div className="order-conRight">
+                                                            <div
+                                                                className="order-conRightBg1"
+                                                            >裁剪{order.produceDetailOutList.cutCount || 0}</div>
+                                                            <div
+                                                                className="order-conRightBg2"
+                                                            >生产{order.produceDetailOutList.produceCount || 0}</div>
+                                                            <div
+                                                                className="order-conRightBg3"
+                                                            >制版{order.produceDetailOutList.plateCount || 0}</div>
+                                                            <div
+                                                                className="order-conRightBg4"
+                                                            >检验{order.produceDetailOutList.checkCount || 0}</div>
+                                                            <div
+                                                                className="order-conRightBg5"
+                                                            >发货{order.produceDetailOutList.sendGoodsCount || 0}</div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    )
                                 })
                                 : <div className="noData">暂无数据</div>
                         }

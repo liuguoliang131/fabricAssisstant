@@ -1,20 +1,24 @@
 .order {
     width: 100%;
     height: 100%;
-    .order-content{
+
+    .order-content {
         box-sizing: border-box;
         padding: 30px;
         width: 100%;
         height: 100%;
+
         .order-search {
             width: 100%;
             display: flex;
             box-sizing: border-box;
+
             .input {
                 flex: 2;
                 display: flex;
                 margin-right: 30px;
             }
+
             .order-screening {
                 width: 114px;
                 height: 62px;
@@ -27,63 +31,77 @@
                 text-align: center;
             }
         }
+
         .order-order {
             padding: 50px 0;
             font-size: 26px;
             font-weight: 500;
             color: #333333;
         }
+
         .order-main {
             height: calc(100vh - 380px);
             overflow-x: hidden;
+
             .order-con {
                 margin-bottom: 30px;
+
                 .order-con-title {
-                  font-size: 24px;
-                  font-weight: 500;
-                  color: #333333;
-                  line-height: 38px;
-                }
-                .order-con-content {
-                  display: flex;
-                  .order-conLeft {
-                    width: 180px;
-                    margin-right: 10px;
                     font-size: 24px;
                     font-weight: 500;
                     color: #333333;
                     line-height: 38px;
-                  }
-                  .order-conRight {
-                      margin-top: 8px;
-                      flex: 1;
-                      height: 52px;
-                      display: flex;
-                      & > div {
-                          flex: 1;
-                          height: 52px;
-                          line-height: 52px;
-                          font-size: 20px;
-                          font-weight: 500;
-                          color: #FFFFFF;
-                          text-align: center;
-                      }
-                      .order-conRightBg1 {
-                          background: #798FFF;
-                      }
-                      .order-conRightBg2 {
-                          background: #7999FF;
-                      }
-                      .order-conRightBg3 {
-                          background: #79ABFF;
-                      }
-                      .order-conRightBg4 {
-                          background: #79C2FF;
-                      }
-                      .order-conRightBg5 {
-                          background: #79D1FF;
-                      }
-                  }
+                }
+
+                .order-con-content {
+                    //display: flex;
+                    .order-conLeft {
+                        width: 100%;
+                        margin-right: 10px;
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: #333333;
+                        line-height: 38px;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+                    .order-conRight {
+                        margin-top: 8px;
+                        flex: 1;
+                        height: 52px;
+                        display: flex;
+
+                        & > div {
+                            flex: 1;
+                            height: 52px;
+                            line-height: 52px;
+                            font-size: 20px;
+                            font-weight: 500;
+                            color: #FFFFFF;
+                            text-align: center;
+                        }
+
+                        .order-conRightBg1 {
+                            background: #798FFF;
+                        }
+
+                        .order-conRightBg2 {
+                            background: #7999FF;
+                        }
+
+                        .order-conRightBg3 {
+                            background: #79ABFF;
+                        }
+
+                        .order-conRightBg4 {
+                            background: #79C2FF;
+                        }
+
+                        .order-conRightBg5 {
+                            background: #79D1FF;
+                        }
+                    }
                 }
             }
         }
