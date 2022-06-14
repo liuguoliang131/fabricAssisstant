@@ -49,9 +49,9 @@ const Popup: FC<IProps> = (props): ReactElement => {
                     <div className="thead">
                         <div className="tr">
                             <div className="th">客户名称</div>
-                            <div className="th">入库数量</div>
-                            <div className="th">发货数量</div>
-                            <div className="th">总数量</div>
+                            <div className="th">入库累计</div>
+                            <div className="th">发货累计</div>
+                            <div className="th">下单数量</div>
                         </div>
                     </div>
                     <div className="tbody">
