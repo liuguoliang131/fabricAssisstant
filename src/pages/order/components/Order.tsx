@@ -267,7 +267,7 @@ const Order: FC = (): ReactElement => {
                         <div className="customer-searchRight">
                             <div className="select" style={{marginLeft: 0}}>
                                 <select onChange={onChangeYears} value={yearsValue}>
-                                    <option label="全部" value="">全部</option>
+                                    {/*<option label="全部" value="">全部</option>*/}
                                     <option label="2021" value="2021">2021</option>
                                     <option label="2022" value="2022">2022</option>
                                     <option label="2023" value="2023">2023</option>
@@ -278,7 +278,7 @@ const Order: FC = (): ReactElement => {
                             </div>
                             <div className="select">
                                 <select onChange={onChange} value={monthsValue}>
-                                    <option label="全部" value="">全部</option>
+                                    {/*<option label="全部" value="">全部</option>*/}
                                     <option label="1月" value="01">1月</option>
                                     <option label="2月" value="02">2月</option>
                                     <option label="3月" value="03">3月</option>
