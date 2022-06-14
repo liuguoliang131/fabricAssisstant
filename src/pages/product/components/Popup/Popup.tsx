@@ -32,7 +32,7 @@ const Popup: FC<IProps> = (props): ReactElement => {
     }, []);
     const getList = async () => {
         try {
-            const res = await getData(`${JOIN_HOUSE_COUNT_BY_UUID}?categoryUuid=${categoryUuid}&companyId=${companyId}`)
+            const res = await getData(`${JOIN_HOUSE_COUNT_BY_UUID}?uuid=${categoryUuid}&companyId=${companyId}`)
             setList(res.model)
         } catch (error) {
             throw error
