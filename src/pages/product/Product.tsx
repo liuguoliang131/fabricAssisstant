@@ -269,9 +269,9 @@ const Product: FC = (): ReactElement => {
                         <div className='table'>
                             <div className="thead">
                                 <div className="th">品类</div>
-                                <div className="th">入库</div>
-                                <div className="th">发货</div>
-                                <div className="th">总数量</div>
+                                <div className="th">入库累计</div>
+                                <div className="th">发货累计</div>
+                                <div className="th">下单数量</div>
                             </div>
                             <div
                                 className="tbody" ref={(dom) => {
