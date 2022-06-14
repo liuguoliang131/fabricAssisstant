@@ -32,6 +32,40 @@
             }
         }
 
+        .order-time {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .customer-searchRight {
+                display: flex;
+                line-height: 50px;
+                .select {
+                    width: 120px;
+                    margin-left: 20px;
+                    select {
+                        width: 90px;
+                    }
+                }
+            }
+            .order-time-data {
+                display: flex;
+                border-radius: 6px;
+                & > span {
+                    width: 80px;
+                    text-align: center;
+                    height: 50px;
+                    line-height: 50px;
+                    display: inline-block;
+                    border: 1px solid #B4B4B4;
+                    color: #B4B4B4;
+                }
+                .order-time-data-color {
+                    border: 1px solid #3376FF;
+                    color: #3376FF;
+                }
+            }
+        }
+
         .order-order {
             padding: 50px 0;
             font-size: 26px;
@@ -54,6 +88,7 @@
                 }
 
                 .order-con-content {
+                    margin-top: 10px;
                     //display: flex;
                     .order-conLeft {
                         width: 100%;

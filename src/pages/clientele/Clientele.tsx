@@ -1,9 +1,9 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react'
 import Header from "components/header/Header";
 import Popup from './components/Popup/Popup'
-import './Product.less'
+import './clientele.less'
 import { getData } from "src/ts/requestUtil";
-import { JOIN_HOUSE_COUNT } from "src/constants/api";
+import { CUSTOMER_STATISTICS } from "src/constants/api";
 import { useHistory } from "react-router-dom";
 
 interface List {
@@ -15,13 +15,9 @@ interface List {
 }
 
 interface tableItem {
-    categoryName: string,
-    categoryUuid: string,
+    order_customer_name: string,
     count: number,
-    joinHouseCount: number,
-    num: number,
-    orderCustomerName: string,
-    sendNum: number
+    finish_count: number
 }
 
 interface Res {
@@ -33,9 +29,19 @@ interface Res {
     traceId: string
 }
 
+interface Data {
+    data: tableItem[],
+    lastPage: boolean,
+    pageNo: number,
+    pageSize: number,
+    startIndex: number,
+    sumPage: number,
+    sumRow: number
+}
+
 const Product: FC = (): ReactElement => {
 
-    console.log(" =========== Product 成品统计 =========== ");
+    console.log(" =========== Clientele 客户统计 =========== ");
 
     const userInfo: any = localStorage.getItem('userInfo')
     const user = JSON.parse(userInfo)
@@ -43,8 +49,7 @@ const Product: FC = (): ReactElement => {
     // const companyId = 538
     // 搜索框
     const [customerName, setCustomerName] = useState<string>('')
-    // 列表
-    const [productList, setProductList] = useState<tableItem[]>([])
+    const [data, setData] = useState<tableItem[]>([])
     // 弹窗
     const [show, setShow] = useState<boolean>(false)
 
@@ -85,9 +90,19 @@ const Product: FC = (): ReactElement => {
     // 统计列表
     const findProductList = async (customerName: string, page: number, yearsTime = '', monthsTime = '', dayTime = '', toYearsTime = '', toMonthsTime = '', toDayTime = '') => {
         try {
-            const res: Res = await getData(`${JOIN_HOUSE_COUNT}?companyId=${companyId}&customerName=${customerName}&pageNo=${page}&pageSize=${pageSize}&startDate=${yearsTime}-${monthsTime}-${dayTime} 00:00:00&endDate=${toYearsTime}-${toMonthsTime}-${toDayTime} 23:59:59`)
+            const res: any = await getData(`${CUSTOMER_STATISTICS}?companyId=${companyId}&customerName=${customerName}&pageNo=${page}&pageSize=${pageSize}&startDate=${yearsTime}-${monthsTime}-${dayTime} 00:00:00&endDate=${toYearsTime}-${toMonthsTime}-${toDayTime} 23:59:59`)
             if (res.success) {
-                setProductList(res.model)
+                // const params = {
+                //     lastPage: res.model.lastPage,
+                //     pageNo: res.model.pageNo,
+                //     pageSize: res.model.pageSize,
+                //     startIndex: res.model.startIndex,
+                //     sumPage: res.model.sumPage,
+                //     sumRow: res.model.sumRow,
+                //     data: page === 1 ? res.model : [...data, ...res.model]
+                // }
+                // setPageNo(res.model.pageNo)
+                setData(res.model)
             } else {
                 alert(res.msg)
             }
@@ -109,7 +124,7 @@ const Product: FC = (): ReactElement => {
 
     // 打开详情
     const handleShowDetail = (idx: number): void => {
-        const item = JSON.parse(JSON.stringify(productList[idx]))
+        const item = JSON.parse(JSON.stringify(data[idx]))
         item.companyId = companyId
         setPopupProps(item)
         // setShow
@@ -124,17 +139,16 @@ const Product: FC = (): ReactElement => {
 
     // 监听页面滚动
     const handleOnScroll = () => {
-        if (dom) {
-            const contentScrollTop = dom.scrollTop + 1; //滚动条距离顶部
-            const clientHeight = dom.clientHeight; //可视区域
-            const scrollHeight = dom.scrollHeight; //滚动条内容的总高度
-            if (contentScrollTop + clientHeight >= scrollHeight) {
-                // if (pageNo + 1 <= productList.sumPage) {
-                if (pageNo + 1 <= 0) {
-                    findProductList(customerName, pageNo + 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue);
-                }
-            }
-        }
+        // if (dom) {
+        //     const contentScrollTop = dom.scrollTop + 1; //滚动条距离顶部
+        //     const clientHeight = dom.clientHeight; //可视区域
+        //     const scrollHeight = dom.scrollHeight; //滚动条内容的总高度
+        //     if (contentScrollTop + clientHeight >= scrollHeight) {
+        //         if (pageNo + 1 <= data.sumPage) {
+        //             findProductList(customerName, pageNo + 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue);
+        //         }
+        //     }
+        // }
     };
 
     const onChangeYears = (e: any) => {
@@ -205,13 +219,13 @@ const Product: FC = (): ReactElement => {
     }
 
     return (
-        <div className="product">
+        <div className="clientele">
             {show ? <Popup {...popupProps} close={close} /> : null}
-            <Header exitHide={true}>成品统计</Header>
+            <Header exitHide={true}>客户统计</Header>
             <div className="order-content">
                 <div className="order-search">
                     <div className="input">
-                        <input type="text" placeholder="请输入企业名称" value={customerName} onChange={handleChange} />
+                        <input type="text" placeholder="请输入客户名称" value={customerName} onChange={handleChange} />
                     </div>
                     <div className="order-screening" onClick={handleSearch}>筛选</div>
                 </div>
@@ -261,17 +275,17 @@ const Product: FC = (): ReactElement => {
                 {/*        /!*    今日*!/*/}
                 {/*        /!*</span>*!/*/}
                 {/*    </div>*/}
-                {/*    <div className="order-order">个数：<span style={{fontWeight: 'bold'}}>{productList.length}</span></div>*/}
+                {/*    <div className="order-order">个数：<span style={{fontWeight: 'bold'}}>{data.length}</span></div>*/}
                 {/*</div>*/}
                 <div className="tablebox">
                     {
 
                         <div className='table'>
                             <div className="thead">
-                                <div className="th">品类</div>
-                                <div className="th">入库</div>
-                                <div className="th">发货</div>
-                                <div className="th">总数量</div>
+                                <div className="th">客户名称</div>
+                                <div className="th">订单数</div>
+                                <div className="th">进行中数</div>
+                                <div className="th">完成数</div>
                             </div>
                             <div
                                 className="tbody" ref={(dom) => {
@@ -279,15 +293,16 @@ const Product: FC = (): ReactElement => {
                             }} onScrollCapture={() => handleOnScroll()}
                             >
                                 {
-                                    productList.length > 0 ? (
-                                        productList.map((item, idx) => (
+                                    data.length > 0 ? (
+                                        data.map((item, idx) => (
                                             <div className="tr">
-                                                <div className="td">{item.categoryName}</div>
-                                                <div className="td">{item.joinHouseCount}</div>
-                                                <div className="td">{item.sendNum}</div>
-                                                <div
-                                                    className="td bling" onClick={() => handleShowDetail(idx)}
-                                                >{item.num}</div>
+                                                <div className="td">{item.order_customer_name}</div>
+                                                <div className="td">{item.count}</div>
+                                                <div className="td">{item.finish_count}</div>
+                                                <div className="td">{item.count - item.finish_count}</div>
+                                                {/*<div*/}
+                                                {/*    className="td bling" onClick={() => handleShowDetail(idx)}*/}
+                                                {/*>{item.stockCount}{item.unit}</div>*/}
                                             </div>
                                         ))) : (
                                         <div className="empty">暂无数据</div>

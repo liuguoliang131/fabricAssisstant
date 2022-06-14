@@ -132,34 +132,84 @@ const Home: FC = (): ReactElement => {
                 <div className="box">
                     <div className="title title-black">统计查询</div>
                     <div className="home-query">
-                        <Link to={`/appLayout/income`}>
-                            <img src={require('../assets/income.png')} className="home-income" />
-                            <div className="home-queryText">收入统计</div>
+                        <Link to={`/appLayout/product`}>
+                            <img src={require('../assets/cp.png')} className="home-img" />
+                            <div className="home-queryText">成品统计</div>
                         </Link>
-                        <Link to={`/appLayout/customer`}>
-                            <img src={require('../assets/customer.png')} className="home-customer" />
-                            <div className="home-queryText">客户统计</div>
-                        </Link>
-                        <Link to={`/appLayout/inventory`}>
-                            <img src={require('../assets/inventory.png')} className="home-inventory" />
+                        <Link to={`/appLayout/repertory`}>
+                            <img src={require('../assets/kc.png')} className="home-img" />
                             <div className="home-queryText">库存统计</div>
+                        </Link>
+                        <Link to={`/appLayout/clientele`}>
+                            <img src={require('../assets/kh.png')} className="home-img" />
+                            <div className="home-queryText">客户统计</div>
                         </Link>
                     </div>
                     <div className="home-query">
-                        <Link to={`/appLayout/performance`}>
-                            <img src={require('../assets/performance.png')} className="home-performance" />
-                            <div className="home-queryText">绩效统计</div>
+                        <Link to={`/appLayout/artisan`}>
+                            <img src={require('../assets/jg.png')} className="home-img" />
+                            <div className="home-queryText">技工统计</div>
                         </Link>
+                        <Link to={`/appLayout/tailor`}>
+                            <img src={require('../assets/cj.png')} className="home-img" />
+                            <div className="home-queryText">裁剪统计</div>
+                        </Link>
+                        <Link to={`/appLayout/platemaking`}>
+                            <img src={require('../assets/zb.png')} className="home-img" />
+                            <div className="home-queryText">制版统计</div>
+                        </Link>
+                    </div>
+                    <div className="home-query">
+                        <Link to={`/appLayout/production`}>
+                            <img src={require('../assets/sc.png')} className="home-img" />
+                            <div className="home-queryText">生产统计</div>
+                        </Link>
+                        <Link to={`/appLayout/examine`}>
+                            <img src={require('../assets/jy.png')} className="home-img" />
+                            <div className="home-queryText">检验统计</div>
+                        </Link>
+                        <Link to={`/appLayout/shipments`}>
+                            <img src={require('../assets/fh.png')} className="home-img" />
+                            <div className="home-queryText">发货统计</div>
+                        </Link>
+                    </div>
+                    <div className="home-query">
                         <Link to={`/appLayout/equipment`}>
-                            <img src={require('../assets/equipment.png')} className="home-equipment" />
+                            <img src={require('../assets/sb.png')} className="home-img" />
                             <div className="home-queryText">设备管理</div>
                         </Link>
-                        <Link to={`/appLayout/product`}>
-                            <img src={require('../assets/product.png')} className="home-equipment" />
-                            <div className="home-queryText">成品统计</div>
-                        </Link>
-                        {/* <a /> */}
+                         <a />
+                         <a />
                     </div>
+                    {/*<div className="home-query">*/}
+                    {/*    <Link to={`/appLayout/income`}>*/}
+                    {/*        <img src={require('../assets/income.png')} className="home-income" />*/}
+                    {/*        <div className="home-queryText">收入统计</div>*/}
+                    {/*    </Link>*/}
+                    {/*    <Link to={`/appLayout/customer`}>*/}
+                    {/*        <img src={require('../assets/customer.png')} className="home-customer" />*/}
+                    {/*        <div className="home-queryText">客户统计</div>*/}
+                    {/*    </Link>*/}
+                    {/*    <Link to={`/appLayout/inventory`}>*/}
+                    {/*        <img src={require('../assets/inventory.png')} className="home-inventory" />*/}
+                    {/*        <div className="home-queryText">库存统计</div>*/}
+                    {/*    </Link>*/}
+                    {/*</div>*/}
+                    {/*<div className="home-query">*/}
+                    {/*    <Link to={`/appLayout/performance`}>*/}
+                    {/*        <img src={require('../assets/performance.png')} className="home-performance" />*/}
+                    {/*        <div className="home-queryText">绩效统计</div>*/}
+                    {/*    </Link>*/}
+                    {/*    <Link to={`/appLayout/equipment`}>*/}
+                    {/*        <img src={require('../assets/equipment.png')} className="home-equipment" />*/}
+                    {/*        <div className="home-queryText">设备管理</div>*/}
+                    {/*    </Link>*/}
+                    {/*    <Link to={`/appLayout/product`}>*/}
+                    {/*        <img src={require('../assets/product.png')} className="home-equipment" />*/}
+                    {/*        <div className="home-queryText">成品统计</div>*/}
+                    {/*    </Link>*/}
+                    {/*    /!* <a /> *!/*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>

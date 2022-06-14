@@ -1,4 +1,4 @@
-.product {
+.artisan {
     height: 100%;
     position: relative;
 
@@ -13,6 +13,10 @@
             width: 100%;
             display: flex;
             box-sizing: border-box;
+
+            .inventorySearch {
+                margin-right: 30px;
+            }
 
             .input {
                 flex: 2;
@@ -81,9 +85,8 @@
         }
 
         .tablebox {
-            margin-top: 30px;
             box-sizing: border-box;
-            height: calc(100vh - 250px);
+            height: calc(100vh - 380px);
 
             .table {
                 height: 100%;
@@ -105,7 +108,7 @@
                 }
 
                 .tbody {
-                    height: calc(100% - 60px);
+                    height: 100%;
                     overflow-x: hidden;
                     .tr {
                         display: flex;

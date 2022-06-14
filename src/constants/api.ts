@@ -62,3 +62,9 @@ export const COMPANY_FIND = '/company/find'
 
 // 首页下单量
 export const PLACE_ORDER_COUNT = '/orderStatistics/placeOrderCount'
+
+// 裁减制版生产统计
+export const ORDER_CUT_PLATE_PRODUCT = '/orderStatistics/orderCutPlateProduct'
+
+// 技工统计
+export const USER_WORK_STATISTICS = '/orderStatistics/userWorkStatistics'
