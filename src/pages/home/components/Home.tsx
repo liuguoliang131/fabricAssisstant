@@ -176,7 +176,7 @@ const Home: FC = (): ReactElement => {
                     <div className="home-query">
                         <Link to={`/appLayout/equipment`}>
                             <img src={require('../assets/sb.png')} className="home-img" />
-                            <div className="home-queryText">设备管理</div>
+                            <div className="home-queryText">设备统计</div>
                         </Link>
                          <a />
                          <a />

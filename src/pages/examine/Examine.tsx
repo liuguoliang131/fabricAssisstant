@@ -75,7 +75,7 @@ const Product: FC = (): ReactElement => {
     let history = useHistory()
 
 
-    const [dayVal, setDayVal] = useState('')
+    const [dayVal, setDayVal] = useState('yesterday')
 
     const date = new Date();
     const years = date.getFullYear().toString();
@@ -101,7 +101,8 @@ const Product: FC = (): ReactElement => {
     const [dom, setDom] = useState<any>(null);
 
     useEffect(() => {
-        findProductList(customerName, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
+        handTime('yesterday')
+        // findProductList(customerName, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
     }, []);
 
     // 统计列表
@@ -317,8 +318,8 @@ const Product: FC = (): ReactElement => {
                                 <div className="th">订单名称</div>
                                 <div className="th">客户</div>
                                 <div className="th">数量</div>
-                                <div className="th">合格数量</div>
-                                <div className="th">不合格数量</div>
+                                <div className="th">合格</div>
+                                <div className="th">不合格</div>
                                 <div className="th">下单时间</div>
                                 <div className="th">完成时间</div>
                             </div>

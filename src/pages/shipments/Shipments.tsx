@@ -75,7 +75,7 @@ const Product: FC = (): ReactElement => {
     let history = useHistory()
 
 
-    const [dayVal, setDayVal] = useState('')
+    const [dayVal, setDayVal] = useState('yesterday')
 
     const date = new Date();
     const years = date.getFullYear().toString();
@@ -101,7 +101,8 @@ const Product: FC = (): ReactElement => {
     const [dom, setDom] = useState<any>(null);
 
     useEffect(() => {
-        findProductList(customerName, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
+        handTime('yesterday')
+        // findProductList(customerName, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
     }, []);
 
     // 统计列表
@@ -333,8 +334,8 @@ const Product: FC = (): ReactElement => {
                                             <div className="tr">
                                                 <div className="td">{item.name}</div>
                                                 <div className="td">{item.orderCustomerName}</div>
-                                                <div className="td">{item.orderCount}</div>
-                                                <div className="td">{item.finishCount}</div>
+                                                <div className="td">{item.orderCount || 0}</div>
+                                                <div className="td">{item.finishCount || 0}</div>
                                                 {/*<div className="td">{item.finishCount}</div>*/}
                                                 <div className="td">{item.createTime.substr(0, 10)}</div>
                                                 <div className="td">{item.finishTime}</div>

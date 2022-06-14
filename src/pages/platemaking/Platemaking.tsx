@@ -75,7 +75,7 @@ const Product: FC = (): ReactElement => {
     let history = useHistory()
 
 
-    const [dayVal, setDayVal] = useState('')
+    const [dayVal, setDayVal] = useState('yesterday')
 
     const date = new Date();
     const years = date.getFullYear().toString();
@@ -99,7 +99,8 @@ const Product: FC = (): ReactElement => {
     const [toDayValue, setToDayValue] = useState(lastDay.toString())
 
     useEffect(() => {
-        findProductList(customerName, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
+        handTime('yesterday')
+        // findProductList(customerName, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
     }, []);
 
     // 统计列表

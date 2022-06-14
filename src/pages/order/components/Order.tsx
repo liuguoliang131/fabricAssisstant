@@ -51,7 +51,7 @@ const Order: FC = (): ReactElement => {
     const [nameVal, setNameVal] = useState('')
     const [orderVal, setOrderVal] = useState('')
 
-    const [dayVal, setDayVal] = useState('')
+    const [dayVal, setDayVal] = useState('yesterday')
 
     const date = new Date();
     const years = date.getFullYear().toString();
@@ -84,7 +84,8 @@ const Order: FC = (): ReactElement => {
 
     useEffect(() => {
         findOrderNum()
-        findOrder(nameVal, orderVal, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
+        handTime('yesterday')
+        // findOrder(nameVal, orderVal, 1, yearsValue, monthsValue, dayValue, toYearsValue, toMonthsValue, toDayValue)
     }, []);
 
     const [pageNo, setPageNo] = useState<number>(1)

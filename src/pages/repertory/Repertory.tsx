@@ -245,7 +245,7 @@ const Product: FC = (): ReactElement => {
                     <div className="select inventorySearch">
                         <select onChange={onChangeType} value={type}>
                             <option label="面料" value="1">面料</option>
-                            <option label="商品" value="2">商品</option>
+                            <option label="商品" value="0">商品</option>
                         </select>
                         <span />
                     </div>
