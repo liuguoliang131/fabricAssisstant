@@ -270,12 +270,12 @@ const Product: FC = (): ReactElement => {
                         >
                             近7日
                         </span>
-                        {/*<span*/}
-                        {/*    className={dayVal === 'today' ? 'order-time-data-color' : ''}*/}
-                        {/*    onClick={() => handTime('today')}*/}
-                        {/*>*/}
-                        {/*    今日*/}
-                        {/*</span>*/}
+                        <span
+                            className={dayVal === 'today' ? 'order-time-data-color' : ''}
+                            onClick={() => handTime('today')}
+                        >
+                            今日
+                        </span>
                     </div>
                     <div className="order-order">个数：<span style={{fontWeight: 'bold'}}>{data.length}</span></div>
                 </div>

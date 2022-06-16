@@ -303,12 +303,12 @@ const Order: FC = (): ReactElement => {
                             >
                                 近7日
                             </span>
-                            {/*<span*/}
-                            {/*    className={dayVal === 'today' ? 'order-time-data-color' : ''}*/}
-                            {/*    onClick={() => handTime('today')}*/}
-                            {/*>*/}
-                            {/*    今日*/}
-                            {/*</span>*/}
+                            <span
+                                className={dayVal === 'today' ? 'order-time-data-color' : ''}
+                                onClick={() => handTime('today')}
+                            >
+                                今日
+                            </span>
                         </div>
                         <div className="order-order">订单数量：<span style={{fontWeight: 'bold'}}>{data.sumRow}</span></div>
                     </div>
