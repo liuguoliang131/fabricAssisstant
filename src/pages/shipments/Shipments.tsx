@@ -243,16 +243,35 @@ const Product: FC = (): ReactElement => {
         }
     }
 
+    const statistics = () => {
+        if (dayVal === 'today') {
+            return '今日'
+        } else if (dayVal === 'yesterday') {
+            return '近7日'
+        } else if (dayVal === '') {
+            return `${yearsValue}-${monthsValue}`
+        }
+        return ''
+    }
+
     return (
         <div className="shipments">
             {show ? <Popup {...popupProps} close={close} /> : null}
             <Header exitHide={true}>发货统计</Header>
             <div className="order-statistics">
-                <div className="order-statistics-title">
-                    统计数量
-                </div>
-                <div className="order-statistics-num">
-                    {data.sumRow}
+                <div className="title">{statistics()}</div>
+                <div className="num">
+                    <div>
+
+                    </div>
+                    <div className="num-right">
+                        <div className="order-statistics-num">
+                            {data.sumRow}
+                        </div>
+                        <div className="order-statistics-title">
+                            统计数量
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="order-content">

@@ -243,16 +243,35 @@ const Product: FC = (): ReactElement => {
         }
     }
 
+    const statistics = () => {
+        if (dayVal === 'today') {
+            return '今日'
+        } else if (dayVal === 'yesterday') {
+            return '近7日'
+        } else if (dayVal === '') {
+            return `${yearsValue}-${monthsValue}`
+        }
+        return ''
+    }
+
     return (
         <div className="platemaking">
             {show ? <Popup {...popupProps} close={close} /> : null}
             <Header exitHide={true}>制版统计</Header>
             <div className="order-statistics">
-                <div className="order-statistics-title">
-                    统计数量
-                </div>
-                <div className="order-statistics-num">
-                    {data.sumRow}
+                <div className="title">{statistics()}</div>
+                <div className="num">
+                    <div>
+
+                    </div>
+                    <div className="num-right">
+                        <div className="order-statistics-num">
+                            {data.sumRow}
+                        </div>
+                        <div className="order-statistics-title">
+                            统计数量
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="order-content">
@@ -330,7 +349,7 @@ const Product: FC = (): ReactElement => {
                                 {
                                     data.data.length > 0 ? (
                                         data.data.map((item, idx) => (
-                                            <div className="tr">
+                                            <div className="tr" key={idx}>
                                                 <div className="td">{item.name}</div>
                                                 <div className="td">{item.orderCustomerName}</div>
                                                 <div className="td">{item.orderCount || 0}</div>
